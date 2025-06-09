@@ -1,0 +1,96 @@
+kind: Document
+content:
+  - kind: Mapping
+    content:
+      - kind: Scalar
+        head: '# First document'
+        text: person
+      - kind: Mapping
+        content:
+          - kind: Scalar
+            text: name
+          - kind: Scalar
+            text: John Doe
+          - kind: Scalar
+            text: age
+          - kind: Scalar
+            tag: '!!int'
+            text: "30"
+          - kind: Scalar
+            text: hobbies
+          - kind: Sequence
+            content:
+              - kind: Scalar
+                text: reading
+              - kind: Scalar
+                text: hiking
+---
+kind: Document
+content:
+  - kind: Mapping
+    content:
+      - kind: Scalar
+        head: '# Second document'
+        text: settings
+      - kind: Mapping
+        content:
+          - kind: Scalar
+            text: debug
+          - kind: Scalar
+            tag: '!!bool'
+            text: "true"
+          - kind: Scalar
+            text: log_level
+          - kind: Scalar
+            text: INFO
+          - kind: Scalar
+            text: features
+          - kind: Sequence
+            style: Flow
+            content:
+              - kind: Scalar
+                text: feature1
+              - kind: Scalar
+                text: feature2
+              - kind: Scalar
+                text: feature3
+---
+kind: Document
+content:
+  - kind: Mapping
+    content:
+      - kind: Scalar
+        head: '# Third document'
+        text: data
+      - kind: Mapping
+        content:
+          - kind: Scalar
+            text: numbers
+          - kind: Sequence
+            style: Flow
+            content:
+              - kind: Scalar
+                tag: '!!int'
+                text: "1"
+              - kind: Scalar
+                tag: '!!int'
+                text: "2"
+              - kind: Scalar
+                tag: '!!int'
+                text: "3"
+              - kind: Scalar
+                tag: '!!int'
+                text: "4"
+              - kind: Scalar
+                tag: '!!int'
+                text: "5"
+          - kind: Scalar
+            text: text
+          - kind: Scalar
+            style: Double
+            text: Hello, World!
+          - kind: Scalar
+            text: flag
+          - kind: Scalar
+            tag: '!!bool'
+            text: "false"

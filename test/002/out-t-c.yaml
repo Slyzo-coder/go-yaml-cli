@@ -1,0 +1,82 @@
+- {Type: STREAM-START}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "person", Style: Single}
+- {Type: VALUE}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "name", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "John Doe", Style: Single}
+- {Type: KEY}
+- {Type: SCALAR, Value: "age", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "30", Style: Single}
+- {Type: KEY}
+- {Type: SCALAR, Value: "hobbies", Style: Single}
+- {Type: VALUE}
+- {Type: BLOCK-SEQUENCE-START}
+- {Type: BLOCK-ENTRY}
+- {Type: SCALAR, Value: "reading", Style: Single}
+- {Type: BLOCK-ENTRY}
+- {Type: SCALAR, Value: "hiking", Style: Single}
+- {Type: BLOCK-END}
+- {Type: BLOCK-END}
+- {Type: BLOCK-END}
+- {Type: DOCUMENT-START}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "settings", Style: Single}
+- {Type: VALUE}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "debug", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "true", Style: Single}
+- {Type: KEY}
+- {Type: SCALAR, Value: "log_level", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "INFO", Style: Single}
+- {Type: KEY}
+- {Type: SCALAR, Value: "features", Style: Single}
+- {Type: VALUE}
+- {Type: FLOW-SEQUENCE-START}
+- {Type: SCALAR, Value: "feature1", Style: Single}
+- {Type: FLOW-ENTRY}
+- {Type: SCALAR, Value: "feature2", Style: Single}
+- {Type: FLOW-ENTRY}
+- {Type: SCALAR, Value: "feature3", Style: Single}
+- {Type: FLOW-SEQUENCE-END}
+- {Type: BLOCK-END}
+- {Type: BLOCK-END}
+- {Type: DOCUMENT-START}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "data", Style: Single}
+- {Type: VALUE}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "numbers", Style: Single}
+- {Type: VALUE}
+- {Type: FLOW-SEQUENCE-START}
+- {Type: SCALAR, Value: "1", Style: Single}
+- {Type: FLOW-ENTRY}
+- {Type: SCALAR, Value: "2", Style: Single}
+- {Type: FLOW-ENTRY}
+- {Type: SCALAR, Value: "3", Style: Single}
+- {Type: FLOW-ENTRY}
+- {Type: SCALAR, Value: "4", Style: Single}
+- {Type: FLOW-ENTRY}
+- {Type: SCALAR, Value: "5", Style: Single}
+- {Type: FLOW-SEQUENCE-END}
+- {Type: KEY}
+- {Type: SCALAR, Value: "text", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "Hello, World!", Style: Double}
+- {Type: KEY}
+- {Type: SCALAR, Value: "flag", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "false", Style: Single}
+- {Type: BLOCK-END}
+- {Type: BLOCK-END}
+- {Type: STREAM-END}

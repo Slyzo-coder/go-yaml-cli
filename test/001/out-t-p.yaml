@@ -1,0 +1,92 @@
+- Token: STREAM-START
+  Pos: {1: 0}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {1: 0}
+
+- Token: KEY
+  Pos: {1: 0}
+
+- Token: SCALAR
+  Value: "a"
+  Style: Single
+  Pos: {1: 0, 1: 1}
+
+- Token: VALUE
+  Pos: {1: 1, 1: 2}
+
+- Token: SCALAR
+  Value: "a"
+  Style: Single
+  Pos: {1: 3, 1: 4}
+
+- Token: KEY
+  Pos: {2: 0}
+
+- Token: SCALAR
+  Value: "b"
+  Style: Single
+  Pos: {2: 0, 2: 1}
+
+- Token: VALUE
+  Pos: {2: 1, 2: 2}
+
+- Token: SCALAR
+  Value: "b"
+  Style: Single
+  Pos: {2: 3, 2: 6}
+
+- Token: KEY
+  Pos: {3: 0}
+
+- Token: SCALAR
+  Value: "c"
+  Style: Single
+  Pos: {3: 0, 3: 1}
+
+- Token: VALUE
+  Pos: {3: 1, 3: 2}
+
+- Token: SCALAR
+  Value: "c"
+  Style: Double
+  Pos: {3: 3, 3: 6}
+
+- Token: KEY
+  Pos: {4: 0}
+
+- Token: SCALAR
+  Value: "d"
+  Style: Single
+  Pos: {4: 0, 4: 1}
+
+- Token: VALUE
+  Pos: {4: 1, 4: 2}
+
+- Token: SCALAR
+  Value: "d"
+  Style: Literal
+  Pos: {4: 3, 6: 0}
+
+- Token: KEY
+  Pos: {6: 0}
+
+- Token: SCALAR
+  Value: "e"
+  Style: Single
+  Pos: {6: 0, 6: 1}
+
+- Token: VALUE
+  Pos: {6: 1, 6: 2}
+
+- Token: SCALAR
+  Value: "e"
+  Style: Folded
+  Pos: {6: 3, 8: 0}
+
+- Token: BLOCK-END
+  Pos: {8: 0}
+
+- Token: STREAM-END
+  Pos: {8: 0}
+

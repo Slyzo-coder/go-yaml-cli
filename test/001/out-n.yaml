@@ -1,0 +1,28 @@
+kind: Document
+content:
+  - kind: Mapping
+    content:
+      - kind: Scalar
+        text: a
+      - kind: Scalar
+        text: a
+      - kind: Scalar
+        text: b
+      - kind: Scalar
+        style: Single
+        text: b
+      - kind: Scalar
+        text: c
+      - kind: Scalar
+        style: Double
+        text: c
+      - kind: Scalar
+        text: d
+      - kind: Scalar
+        style: Literal
+        text: d
+      - kind: Scalar
+        text: e
+      - kind: Scalar
+        style: Folded
+        text: e

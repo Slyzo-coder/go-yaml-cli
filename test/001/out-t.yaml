@@ -1,0 +1,68 @@
+- Token: STREAM-START
+
+- Token: BLOCK-MAPPING-START
+
+- Token: KEY
+
+- Token: SCALAR
+  Value: "a"
+  Style: Single
+
+- Token: VALUE
+
+- Token: SCALAR
+  Value: "a"
+  Style: Single
+
+- Token: KEY
+
+- Token: SCALAR
+  Value: "b"
+  Style: Single
+
+- Token: VALUE
+
+- Token: SCALAR
+  Value: "b"
+  Style: Single
+
+- Token: KEY
+
+- Token: SCALAR
+  Value: "c"
+  Style: Single
+
+- Token: VALUE
+
+- Token: SCALAR
+  Value: "c"
+  Style: Double
+
+- Token: KEY
+
+- Token: SCALAR
+  Value: "d"
+  Style: Single
+
+- Token: VALUE
+
+- Token: SCALAR
+  Value: "d"
+  Style: Literal
+
+- Token: KEY
+
+- Token: SCALAR
+  Value: "e"
+  Style: Single
+
+- Token: VALUE
+
+- Token: SCALAR
+  Value: "e"
+  Style: Folded
+
+- Token: BLOCK-END
+
+- Token: STREAM-END
+

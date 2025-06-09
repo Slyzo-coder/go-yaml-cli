@@ -1,0 +1,24 @@
+- {Type: STREAM-START}
+- {Type: BLOCK-MAPPING-START}
+- {Type: KEY}
+- {Type: SCALAR, Value: "a", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "a", Style: Single}
+- {Type: KEY}
+- {Type: SCALAR, Value: "b", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "b", Style: Single}
+- {Type: KEY}
+- {Type: SCALAR, Value: "c", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "c", Style: Double}
+- {Type: KEY}
+- {Type: SCALAR, Value: "d", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "d", Style: Literal}
+- {Type: KEY}
+- {Type: SCALAR, Value: "e", Style: Single}
+- {Type: VALUE}
+- {Type: SCALAR, Value: "e", Style: Folded}
+- {Type: BLOCK-END}
+- {Type: STREAM-END}

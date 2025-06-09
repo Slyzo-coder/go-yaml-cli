@@ -1,0 +1,302 @@
+- Token: STREAM-START
+  Pos: {1: 0}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {2: 0}
+
+- Token: KEY
+  Pos: {2: 0}
+
+- Token: SCALAR
+  Value: "person"
+  Style: Single
+  Pos: {2: 0, 2: 6}
+
+- Token: VALUE
+  Pos: {2: 6, 2: 7}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {3: 2}
+
+- Token: KEY
+  Pos: {3: 2}
+
+- Token: SCALAR
+  Value: "name"
+  Style: Single
+  Pos: {3: 2, 3: 6}
+
+- Token: VALUE
+  Pos: {3: 6, 3: 7}
+
+- Token: SCALAR
+  Value: "John Doe"
+  Style: Single
+  Pos: {3: 8, 3: 16}
+
+- Token: KEY
+  Pos: {4: 2}
+
+- Token: SCALAR
+  Value: "age"
+  Style: Single
+  Pos: {4: 2, 4: 5}
+
+- Token: VALUE
+  Pos: {4: 5, 4: 6}
+
+- Token: SCALAR
+  Value: "30"
+  Style: Single
+  Pos: {4: 7, 4: 9}
+
+- Token: KEY
+  Pos: {5: 2}
+
+- Token: SCALAR
+  Value: "hobbies"
+  Style: Single
+  Pos: {5: 2, 5: 9}
+
+- Token: VALUE
+  Pos: {5: 9, 5: 10}
+
+- Token: BLOCK-SEQUENCE-START
+  Pos: {6: 4}
+
+- Token: BLOCK-ENTRY
+  Pos: {6: 4, 6: 5}
+
+- Token: SCALAR
+  Value: "reading"
+  Style: Single
+  Pos: {6: 6, 6: 13}
+
+- Token: BLOCK-ENTRY
+  Pos: {7: 4, 7: 5}
+
+- Token: SCALAR
+  Value: "hiking"
+  Style: Single
+  Pos: {7: 6, 7: 12}
+
+- Token: BLOCK-END
+  Pos: {8: 0}
+
+- Token: BLOCK-END
+  Pos: {8: 0}
+
+- Token: BLOCK-END
+  Pos: {8: 0}
+
+- Token: DOCUMENT-START
+  Pos: {8: 0, 8: 3}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {10: 0}
+
+- Token: KEY
+  Pos: {10: 0}
+
+- Token: SCALAR
+  Value: "settings"
+  Style: Single
+  Pos: {10: 0, 10: 8}
+
+- Token: VALUE
+  Pos: {10: 8, 10: 9}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {11: 2}
+
+- Token: KEY
+  Pos: {11: 2}
+
+- Token: SCALAR
+  Value: "debug"
+  Style: Single
+  Pos: {11: 2, 11: 7}
+
+- Token: VALUE
+  Pos: {11: 7, 11: 8}
+
+- Token: SCALAR
+  Value: "true"
+  Style: Single
+  Pos: {11: 9, 11: 13}
+
+- Token: KEY
+  Pos: {12: 2}
+
+- Token: SCALAR
+  Value: "log_level"
+  Style: Single
+  Pos: {12: 2, 12: 11}
+
+- Token: VALUE
+  Pos: {12: 11, 12: 12}
+
+- Token: SCALAR
+  Value: "INFO"
+  Style: Single
+  Pos: {12: 13, 12: 17}
+
+- Token: KEY
+  Pos: {13: 2}
+
+- Token: SCALAR
+  Value: "features"
+  Style: Single
+  Pos: {13: 2, 13: 10}
+
+- Token: VALUE
+  Pos: {13: 10, 13: 11}
+
+- Token: FLOW-SEQUENCE-START
+  Pos: {13: 12, 13: 13}
+
+- Token: SCALAR
+  Value: "feature1"
+  Style: Single
+  Pos: {13: 13, 13: 21}
+
+- Token: FLOW-ENTRY
+  Pos: {13: 21, 13: 22}
+
+- Token: SCALAR
+  Value: "feature2"
+  Style: Single
+  Pos: {13: 23, 13: 31}
+
+- Token: FLOW-ENTRY
+  Pos: {13: 31, 13: 32}
+
+- Token: SCALAR
+  Value: "feature3"
+  Style: Single
+  Pos: {13: 33, 13: 41}
+
+- Token: FLOW-SEQUENCE-END
+  Pos: {13: 41, 13: 42}
+
+- Token: BLOCK-END
+  Pos: {13: 42}
+
+- Token: BLOCK-END
+  Pos: {14: 0}
+
+- Token: DOCUMENT-START
+  Pos: {14: 0, 14: 3}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {16: 0}
+
+- Token: KEY
+  Pos: {16: 0}
+
+- Token: SCALAR
+  Value: "data"
+  Style: Single
+  Pos: {16: 0, 16: 4}
+
+- Token: VALUE
+  Pos: {16: 4, 16: 5}
+
+- Token: BLOCK-MAPPING-START
+  Pos: {17: 2}
+
+- Token: KEY
+  Pos: {17: 2}
+
+- Token: SCALAR
+  Value: "numbers"
+  Style: Single
+  Pos: {17: 2, 17: 9}
+
+- Token: VALUE
+  Pos: {17: 9, 17: 10}
+
+- Token: FLOW-SEQUENCE-START
+  Pos: {17: 11, 17: 12}
+
+- Token: SCALAR
+  Value: "1"
+  Style: Single
+  Pos: {17: 12, 17: 13}
+
+- Token: FLOW-ENTRY
+  Pos: {17: 13, 17: 14}
+
+- Token: SCALAR
+  Value: "2"
+  Style: Single
+  Pos: {17: 15, 17: 16}
+
+- Token: FLOW-ENTRY
+  Pos: {17: 16, 17: 17}
+
+- Token: SCALAR
+  Value: "3"
+  Style: Single
+  Pos: {17: 18, 17: 19}
+
+- Token: FLOW-ENTRY
+  Pos: {17: 19, 17: 20}
+
+- Token: SCALAR
+  Value: "4"
+  Style: Single
+  Pos: {17: 21, 17: 22}
+
+- Token: FLOW-ENTRY
+  Pos: {17: 22, 17: 23}
+
+- Token: SCALAR
+  Value: "5"
+  Style: Single
+  Pos: {17: 24, 17: 25}
+
+- Token: FLOW-SEQUENCE-END
+  Pos: {17: 25, 17: 26}
+
+- Token: KEY
+  Pos: {18: 2}
+
+- Token: SCALAR
+  Value: "text"
+  Style: Single
+  Pos: {18: 2, 18: 6}
+
+- Token: VALUE
+  Pos: {18: 6, 18: 7}
+
+- Token: SCALAR
+  Value: "Hello, World!"
+  Style: Double
+  Pos: {18: 8, 18: 23}
+
+- Token: KEY
+  Pos: {19: 2}
+
+- Token: SCALAR
+  Value: "flag"
+  Style: Single
+  Pos: {19: 2, 19: 6}
+
+- Token: VALUE
+  Pos: {19: 6, 19: 7}
+
+- Token: SCALAR
+  Value: "false"
+  Style: Single
+  Pos: {19: 8, 19: 13}
+
+- Token: BLOCK-END
+  Pos: {20: 0}
+
+- Token: BLOCK-END
+  Pos: {20: 0}
+
+- Token: STREAM-END
+  Pos: {20: 0}
+

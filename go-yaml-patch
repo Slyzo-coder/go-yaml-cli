@@ -1,0 +1,161 @@
+diff --git a/yaml.go b/yaml.go
+index 15c71fa..226ac03 100644
+--- a/yaml.go
++++ b/yaml.go
+@@ -810,3 +810,156 @@ func formatEvent(e *yaml_event_t) string {
+ 	}
+ 	return b.String()
+ }
++
++// Token types for external use
++const (
++	EventStreamStart        = "STREAM-START"
++	EventStreamEnd          = "STREAM-END"
++	EventDocumentStart      = "DOCUMENT-START"
++	EventDocumentEnd        = "DOCUMENT-END"
++	EventBlockSequenceStart = "BLOCK-SEQUENCE-START"
++	EventBlockMappingStart  = "BLOCK-MAPPING-START"
++	EventBlockEnd           = "BLOCK-END"
++	EventFlowSequenceStart  = "FLOW-SEQUENCE-START"
++	EventFlowSequenceEnd    = "FLOW-SEQUENCE-END"
++	EventFlowMappingStart   = "FLOW-MAPPING-START"
++	EventFlowMappingEnd     = "FLOW-MAPPING-END"
++	EventBlockEntry         = "BLOCK-ENTRY"
++	EventFlowEntry          = "FLOW-ENTRY"
++	EventKey                = "KEY"
++	EventValue              = "VALUE"
++	EventAlias              = "ALIAS"
++	EventAnchor             = "ANCHOR"
++	EventTag                = "TAG"
++	EventScalar             = "SCALAR"
++	EventVersionDirective   = "VERSION-DIRECTIVE"
++	EventTagDirective       = "TAG-DIRECTIVE"
++)
++
++// Token represents a YAML token
++type Token struct {
++	Type      string
++	Value     string
++	Style     string
++	StartLine int
++	StartCol  int
++	EndLine   int
++	EndCol    int
++}
++
++// scalarStyleToString converts a yaml_scalar_style_t to a string representation
++func scalarStyleToString(style yaml_scalar_style_t) string {
++	switch style {
++	case yaml_PLAIN_SCALAR_STYLE:
++		return "Single"
++	case yaml_SINGLE_QUOTED_SCALAR_STYLE:
++		return "Single"
++	case yaml_DOUBLE_QUOTED_SCALAR_STYLE:
++		return "Double"
++	case yaml_LITERAL_SCALAR_STYLE:
++		return "Literal"
++	case yaml_FOLDED_SCALAR_STYLE:
++		return "Folded"
++	default:
++		return ""
++	}
++}
++
++// Parser provides access to the internal YAML parser
++type Parser struct {
++	parser yaml_parser_t
++	done   bool
++}
++
++// NewParser creates a new YAML parser reading from the given reader
++func NewParser(reader io.Reader) (*Parser, error) {
++	var p Parser
++	if !yaml_parser_initialize(&p.parser) {
++		return nil, fmt.Errorf("failed to initialize YAML parser")
++	}
++	yaml_parser_set_input_reader(&p.parser, reader)
++	return &p, nil
++}
++
++// Next returns the next token in the YAML stream
++func (p *Parser) Next() (*Token, error) {
++	if p.done {
++		return nil, nil
++	}
++
++	var yamlToken yaml_token_t
++	if !yaml_parser_scan(&p.parser, &yamlToken) {
++		if p.parser.error != yaml_NO_ERROR {
++			return nil, fmt.Errorf("parser error: %v", p.parser.problem)
++		}
++		p.done = true
++		return nil, nil
++	}
++
++	token := &Token{
++		StartLine: int(yamlToken.start_mark.line) + 1,
++		StartCol:  int(yamlToken.start_mark.column),
++		EndLine:   int(yamlToken.end_mark.line) + 1,
++		EndCol:    int(yamlToken.end_mark.column),
++	}
++
++	switch yamlToken.typ {
++	case yaml_STREAM_START_TOKEN:
++		token.Type = EventStreamStart
++	case yaml_STREAM_END_TOKEN:
++		token.Type = EventStreamEnd
++		p.done = true
++	case yaml_DOCUMENT_START_TOKEN:
++		token.Type = EventDocumentStart
++	case yaml_DOCUMENT_END_TOKEN:
++		token.Type = EventDocumentEnd
++	case yaml_BLOCK_SEQUENCE_START_TOKEN:
++		token.Type = EventBlockSequenceStart
++	case yaml_BLOCK_MAPPING_START_TOKEN:
++		token.Type = EventBlockMappingStart
++	case yaml_BLOCK_END_TOKEN:
++		token.Type = EventBlockEnd
++	case yaml_FLOW_SEQUENCE_START_TOKEN:
++		token.Type = EventFlowSequenceStart
++	case yaml_FLOW_SEQUENCE_END_TOKEN:
++		token.Type = EventFlowSequenceEnd
++	case yaml_FLOW_MAPPING_START_TOKEN:
++		token.Type = EventFlowMappingStart
++	case yaml_FLOW_MAPPING_END_TOKEN:
++		token.Type = EventFlowMappingEnd
++	case yaml_BLOCK_ENTRY_TOKEN:
++		token.Type = EventBlockEntry
++	case yaml_FLOW_ENTRY_TOKEN:
++		token.Type = EventFlowEntry
++	case yaml_KEY_TOKEN:
++		token.Type = EventKey
++	case yaml_VALUE_TOKEN:
++		token.Type = EventValue
++	case yaml_ALIAS_TOKEN:
++		token.Type = EventAlias
++		token.Value = string(yamlToken.value)
++	case yaml_ANCHOR_TOKEN:
++		token.Type = EventAnchor
++		token.Value = string(yamlToken.value)
++	case yaml_TAG_TOKEN:
++		token.Type = EventTag
++		token.Value = string(yamlToken.value)
++	case yaml_SCALAR_TOKEN:
++		token.Type = EventScalar
++		token.Value = string(yamlToken.value)
++		token.Style = scalarStyleToString(yamlToken.style)
++	case yaml_VERSION_DIRECTIVE_TOKEN:
++		token.Type = EventVersionDirective
++	case yaml_TAG_DIRECTIVE_TOKEN:
++		token.Type = EventTagDirective
++	default:
++		token.Type = "UNKNOWN"
++	}
++
++	return token, nil
++}
++
++// Close releases the parser resources
++func (p *Parser) Close() {
++	yaml_parser_delete(&p.parser)
++}

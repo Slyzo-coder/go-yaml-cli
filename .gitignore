@@ -1,0 +1,6 @@
+/.cache/
+/.go-yaml/
+/go-yaml
+/*.yaml
+/out*
+/test.sh

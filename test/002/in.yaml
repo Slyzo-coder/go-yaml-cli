@@ -1,0 +1,19 @@
+# First document
+person:
+  name: John Doe
+  age: 30
+  hobbies:
+    - reading
+    - hiking
+---
+# Second document
+settings:
+  debug: true
+  log_level: INFO
+  features: [feature1, feature2, feature3]
+---
+# Third document
+data:
+  numbers: [1, 2, 3, 4, 5]
+  text: "Hello, World!"
+  flag: false

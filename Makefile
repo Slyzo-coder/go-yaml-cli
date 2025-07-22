@@ -51,6 +51,9 @@ install: $(PROGRAM)
 	install -m 0755 $(PROGRAM) $(PREFIX)/bin/$(PROGRAM)
 endif
 
+update-patch: $(GO-YAML-REPO-DIR)
+	git -C $< diff > $(GO-YAML-PATCH)
+
 ifndef tnum
 gen-test-files:
 	@echo "tnum is not set"

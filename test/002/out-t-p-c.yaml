@@ -1,82 +1,92 @@
-- {Type: STREAM-START, Pos: {1: 0}}
-- {Type: BLOCK-MAPPING-START, Pos: {2: 0}}
-- {Type: KEY, Pos: {2: 0}}
-- {Type: SCALAR, Value: "person", Pos: {2: 0, 2: 6}}
-- {Type: VALUE, Pos: {2: 6, 2: 7}}
-- {Type: BLOCK-MAPPING-START, Pos: {3: 2}}
-- {Type: KEY, Pos: {3: 2}}
-- {Type: SCALAR, Value: "name", Pos: {3: 2, 3: 6}}
-- {Type: VALUE, Pos: {3: 6, 3: 7}}
-- {Type: SCALAR, Value: "John Doe", Pos: {3: 8, 3: 16}}
-- {Type: KEY, Pos: {4: 2}}
-- {Type: SCALAR, Value: "age", Pos: {4: 2, 4: 5}}
-- {Type: VALUE, Pos: {4: 5, 4: 6}}
-- {Type: SCALAR, Value: "30", Pos: {4: 7, 4: 9}}
-- {Type: KEY, Pos: {5: 2}}
-- {Type: SCALAR, Value: "hobbies", Pos: {5: 2, 5: 9}}
-- {Type: VALUE, Pos: {5: 9, 5: 10}}
-- {Type: BLOCK-SEQUENCE-START, Pos: {6: 4}}
-- {Type: BLOCK-ENTRY, Pos: {6: 4, 6: 5}}
-- {Type: SCALAR, Value: "reading", Pos: {6: 6, 6: 13}}
-- {Type: BLOCK-ENTRY, Pos: {7: 4, 7: 5}}
-- {Type: SCALAR, Value: "hiking", Pos: {7: 6, 7: 12}}
-- {Type: BLOCK-END, Pos: {8: 0}}
-- {Type: BLOCK-END, Pos: {8: 0}}
-- {Type: BLOCK-END, Pos: {8: 0}}
-- {Type: DOCUMENT-START, Pos: {8: 0, 8: 3}}
-- {Type: BLOCK-MAPPING-START, Pos: {10: 0}}
-- {Type: KEY, Pos: {10: 0}}
-- {Type: SCALAR, Value: "settings", Pos: {10: 0, 10: 8}}
-- {Type: VALUE, Pos: {10: 8, 10: 9}}
-- {Type: BLOCK-MAPPING-START, Pos: {11: 2}}
-- {Type: KEY, Pos: {11: 2}}
-- {Type: SCALAR, Value: "debug", Pos: {11: 2, 11: 7}}
-- {Type: VALUE, Pos: {11: 7, 11: 8}}
-- {Type: SCALAR, Value: "true", Pos: {11: 9, 11: 13}}
-- {Type: KEY, Pos: {12: 2}}
-- {Type: SCALAR, Value: "log_level", Pos: {12: 2, 12: 11}}
-- {Type: VALUE, Pos: {12: 11, 12: 12}}
-- {Type: SCALAR, Value: "INFO", Pos: {12: 13, 12: 17}}
-- {Type: KEY, Pos: {13: 2}}
-- {Type: SCALAR, Value: "features", Pos: {13: 2, 13: 10}}
-- {Type: VALUE, Pos: {13: 10, 13: 11}}
-- {Type: FLOW-SEQUENCE-START, Pos: {13: 12, 13: 13}}
-- {Type: SCALAR, Value: "feature1", Pos: {13: 13, 13: 21}}
-- {Type: FLOW-ENTRY, Pos: {13: 21, 13: 22}}
-- {Type: SCALAR, Value: "feature2", Pos: {13: 23, 13: 31}}
-- {Type: FLOW-ENTRY, Pos: {13: 31, 13: 32}}
-- {Type: SCALAR, Value: "feature3", Pos: {13: 33, 13: 41}}
-- {Type: FLOW-SEQUENCE-END, Pos: {13: 41, 13: 42}}
-- {Type: BLOCK-END, Pos: {13: 42}}
-- {Type: BLOCK-END, Pos: {14: 0}}
-- {Type: DOCUMENT-START, Pos: {14: 0, 14: 3}}
-- {Type: BLOCK-MAPPING-START, Pos: {16: 0}}
-- {Type: KEY, Pos: {16: 0}}
-- {Type: SCALAR, Value: "data", Pos: {16: 0, 16: 4}}
-- {Type: VALUE, Pos: {16: 4, 16: 5}}
-- {Type: BLOCK-MAPPING-START, Pos: {17: 2}}
-- {Type: KEY, Pos: {17: 2}}
-- {Type: SCALAR, Value: "numbers", Pos: {17: 2, 17: 9}}
-- {Type: VALUE, Pos: {17: 9, 17: 10}}
-- {Type: FLOW-SEQUENCE-START, Pos: {17: 11, 17: 12}}
-- {Type: SCALAR, Value: "1", Pos: {17: 12, 17: 13}}
-- {Type: FLOW-ENTRY, Pos: {17: 13, 17: 14}}
-- {Type: SCALAR, Value: "2", Pos: {17: 15, 17: 16}}
-- {Type: FLOW-ENTRY, Pos: {17: 16, 17: 17}}
-- {Type: SCALAR, Value: "3", Pos: {17: 18, 17: 19}}
-- {Type: FLOW-ENTRY, Pos: {17: 19, 17: 20}}
-- {Type: SCALAR, Value: "4", Pos: {17: 21, 17: 22}}
-- {Type: FLOW-ENTRY, Pos: {17: 22, 17: 23}}
-- {Type: SCALAR, Value: "5", Pos: {17: 24, 17: 25}}
-- {Type: FLOW-SEQUENCE-END, Pos: {17: 25, 17: 26}}
-- {Type: KEY, Pos: {18: 2}}
-- {Type: SCALAR, Value: "text", Pos: {18: 2, 18: 6}}
-- {Type: VALUE, Pos: {18: 6, 18: 7}}
-- {Type: SCALAR, Value: "Hello, World!", Style: Double, Pos: {18: 8, 18: 23}}
-- {Type: KEY, Pos: {19: 2}}
-- {Type: SCALAR, Value: "flag", Pos: {19: 2, 19: 6}}
-- {Type: VALUE, Pos: {19: 6, 19: 7}}
-- {Type: SCALAR, Value: "false", Pos: {19: 8, 19: 13}}
-- {Type: BLOCK-END, Pos: {20: 0}}
-- {Type: BLOCK-END, Pos: {20: 0}}
-- {Type: STREAM-END, Pos: {20: 0}}
+- {Type: STREAM-START, Pos: {0: 0}}
+- {Type: DOCUMENT-START, Pos: {0: 0}}
+- {Type: BLOCK-MAPPING-START, Pos: {2: 1}}
+- {Type: KEY, Pos: {2: 1}}
+- {Type: SCALAR, Value: "person", Head: "# First document", Pos: {2: 1, 2: 7}}
+- {Type: VALUE, Pos: {3: 3}}
+- {Type: BLOCK-MAPPING-START, Pos: {3: 3}}
+- {Type: KEY, Pos: {3: 3}}
+- {Type: SCALAR, Value: "name", Pos: {3: 3, 3: 7}}
+- {Type: VALUE, Pos: {3: 9}}
+- {Type: SCALAR, Value: "John Doe", Pos: {3: 9, 3: 17}}
+- {Type: KEY, Pos: {4: 3}}
+- {Type: SCALAR, Value: "age", Pos: {4: 3, 4: 6}}
+- {Type: VALUE, Pos: {4: 8}}
+- {Type: SCALAR, Value: "30", Pos: {4: 8, 4: 10}}
+- {Type: KEY, Pos: {5: 3}}
+- {Type: SCALAR, Value: "hobbies", Pos: {5: 3, 5: 10}}
+- {Type: VALUE, Pos: {6: 5}}
+- {Type: BLOCK-SEQUENCE-START, Pos: {6: 5}}
+- {Type: BLOCK-ENTRY, Pos: {6: 7}}
+- {Type: SCALAR, Value: "reading", Pos: {6: 7, 6: 14}}
+- {Type: BLOCK-ENTRY, Pos: {7: 7}}
+- {Type: SCALAR, Value: "hiking", Pos: {7: 7, 7: 13}}
+- {Type: BLOCK-END, Pos: {6: 5}}
+- {Type: BLOCK-END, Pos: {3: 3}}
+- {Type: BLOCK-END, Pos: {2: 1}}
+- {Type: DOCUMENT-END, Pos: {0: 0}}
+- {Type: STREAM-END, Pos: {0: 0}}
+- {Type: STREAM-START, Pos: {0: 0}}
+- {Type: DOCUMENT-START, Pos: {0: 0}}
+- {Type: BLOCK-MAPPING-START, Pos: {10: 1}}
+- {Type: KEY, Pos: {10: 1}}
+- {Type: SCALAR, Value: "settings", Head: "# Second document", Pos: {10: 1, 10: 9}}
+- {Type: VALUE, Pos: {11: 3}}
+- {Type: BLOCK-MAPPING-START, Pos: {11: 3}}
+- {Type: KEY, Pos: {11: 3}}
+- {Type: SCALAR, Value: "debug", Pos: {11: 3, 11: 8}}
+- {Type: VALUE, Pos: {11: 10}}
+- {Type: SCALAR, Value: "true", Pos: {11: 10, 11: 14}}
+- {Type: KEY, Pos: {12: 3}}
+- {Type: SCALAR, Value: "log_level", Pos: {12: 3, 12: 12}}
+- {Type: VALUE, Pos: {12: 14}}
+- {Type: SCALAR, Value: "INFO", Pos: {12: 14, 12: 18}}
+- {Type: KEY, Pos: {13: 3}}
+- {Type: SCALAR, Value: "features", Pos: {13: 3, 13: 11}}
+- {Type: VALUE, Pos: {13: 13}}
+- {Type: BLOCK-SEQUENCE-START, Pos: {13: 13}}
+- {Type: BLOCK-ENTRY, Pos: {13: 14}}
+- {Type: SCALAR, Value: "feature1", Pos: {13: 14, 13: 22}}
+- {Type: BLOCK-ENTRY, Pos: {13: 24}}
+- {Type: SCALAR, Value: "feature2", Pos: {13: 24, 13: 32}}
+- {Type: BLOCK-ENTRY, Pos: {13: 34}}
+- {Type: SCALAR, Value: "feature3", Pos: {13: 34, 13: 42}}
+- {Type: BLOCK-END, Pos: {13: 13}}
+- {Type: BLOCK-END, Pos: {11: 3}}
+- {Type: BLOCK-END, Pos: {10: 1}}
+- {Type: DOCUMENT-END, Pos: {0: 0}}
+- {Type: STREAM-END, Pos: {0: 0}}
+- {Type: STREAM-START, Pos: {0: 0}}
+- {Type: DOCUMENT-START, Pos: {0: 0}}
+- {Type: BLOCK-MAPPING-START, Pos: {16: 1}}
+- {Type: KEY, Pos: {16: 1}}
+- {Type: SCALAR, Value: "data", Head: "# Third document", Pos: {16: 1, 16: 5}}
+- {Type: VALUE, Pos: {17: 3}}
+- {Type: BLOCK-MAPPING-START, Pos: {17: 3}}
+- {Type: KEY, Pos: {17: 3}}
+- {Type: SCALAR, Value: "numbers", Pos: {17: 3, 17: 10}}
+- {Type: VALUE, Pos: {17: 12}}
+- {Type: BLOCK-SEQUENCE-START, Pos: {17: 12}}
+- {Type: BLOCK-ENTRY, Pos: {17: 13}}
+- {Type: SCALAR, Value: "1", Pos: {17: 13, 17: 14}}
+- {Type: BLOCK-ENTRY, Pos: {17: 16}}
+- {Type: SCALAR, Value: "2", Pos: {17: 16, 17: 17}}
+- {Type: BLOCK-ENTRY, Pos: {17: 19}}
+- {Type: SCALAR, Value: "3", Pos: {17: 19, 17: 20}}
+- {Type: BLOCK-ENTRY, Pos: {17: 22}}
+- {Type: SCALAR, Value: "4", Pos: {17: 22, 17: 23}}
+- {Type: BLOCK-ENTRY, Pos: {17: 25}}
+- {Type: SCALAR, Value: "5", Pos: {17: 25, 17: 26}}
+- {Type: BLOCK-END, Pos: {17: 12}}
+- {Type: KEY, Pos: {18: 3}}
+- {Type: SCALAR, Value: "text", Pos: {18: 3, 18: 7}}
+- {Type: VALUE, Pos: {18: 9}}
+- {Type: SCALAR, Value: "Hello, World!", Style: Double, Pos: {18: 9, 18: 22}}
+- {Type: KEY, Pos: {19: 3}}
+- {Type: SCALAR, Value: "flag", Pos: {19: 3, 19: 7}}
+- {Type: VALUE, Pos: {19: 9}}
+- {Type: SCALAR, Value: "false", Pos: {19: 9, 19: 14}}
+- {Type: BLOCK-END, Pos: {17: 3}}
+- {Type: BLOCK-END, Pos: {16: 1}}
+- {Type: DOCUMENT-END, Pos: {0: 0}}
+- {Type: STREAM-END, Pos: {0: 0}}

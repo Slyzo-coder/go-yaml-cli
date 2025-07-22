@@ -1,4 +1,5 @@
 - {Type: STREAM-START}
+- {Type: DOCUMENT-START}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
 - {Type: SCALAR, Value: "a"}
@@ -21,4 +22,5 @@
 - {Type: VALUE}
 - {Type: SCALAR, Value: "e", Style: Folded}
 - {Type: BLOCK-END}
+- {Type: DOCUMENT-END}
 - {Type: STREAM-END}

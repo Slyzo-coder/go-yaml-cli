@@ -1,7 +1,8 @@
 - {Type: STREAM-START}
+- {Type: DOCUMENT-START}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
-- {Type: SCALAR, Value: "person"}
+- {Type: SCALAR, Value: "person", Head: "# First document"}
 - {Type: VALUE}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
@@ -23,10 +24,13 @@
 - {Type: BLOCK-END}
 - {Type: BLOCK-END}
 - {Type: BLOCK-END}
+- {Type: DOCUMENT-END}
+- {Type: STREAM-END}
+- {Type: STREAM-START}
 - {Type: DOCUMENT-START}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
-- {Type: SCALAR, Value: "settings"}
+- {Type: SCALAR, Value: "settings", Head: "# Second document"}
 - {Type: VALUE}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
@@ -40,35 +44,40 @@
 - {Type: KEY}
 - {Type: SCALAR, Value: "features"}
 - {Type: VALUE}
-- {Type: FLOW-SEQUENCE-START}
+- {Type: BLOCK-SEQUENCE-START}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "feature1"}
-- {Type: FLOW-ENTRY}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "feature2"}
-- {Type: FLOW-ENTRY}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "feature3"}
-- {Type: FLOW-SEQUENCE-END}
 - {Type: BLOCK-END}
 - {Type: BLOCK-END}
+- {Type: BLOCK-END}
+- {Type: DOCUMENT-END}
+- {Type: STREAM-END}
+- {Type: STREAM-START}
 - {Type: DOCUMENT-START}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
-- {Type: SCALAR, Value: "data"}
+- {Type: SCALAR, Value: "data", Head: "# Third document"}
 - {Type: VALUE}
 - {Type: BLOCK-MAPPING-START}
 - {Type: KEY}
 - {Type: SCALAR, Value: "numbers"}
 - {Type: VALUE}
-- {Type: FLOW-SEQUENCE-START}
+- {Type: BLOCK-SEQUENCE-START}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "1"}
-- {Type: FLOW-ENTRY}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "2"}
-- {Type: FLOW-ENTRY}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "3"}
-- {Type: FLOW-ENTRY}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "4"}
-- {Type: FLOW-ENTRY}
+- {Type: BLOCK-ENTRY}
 - {Type: SCALAR, Value: "5"}
-- {Type: FLOW-SEQUENCE-END}
+- {Type: BLOCK-END}
 - {Type: KEY}
 - {Type: SCALAR, Value: "text"}
 - {Type: VALUE}
@@ -79,4 +88,5 @@
 - {Type: SCALAR, Value: "false"}
 - {Type: BLOCK-END}
 - {Type: BLOCK-END}
+- {Type: DOCUMENT-END}
 - {Type: STREAM-END}

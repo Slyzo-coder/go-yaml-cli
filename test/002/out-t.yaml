@@ -1,11 +1,14 @@
 - Token: STREAM-START
 
+- Token: DOCUMENT-START
+
 - Token: BLOCK-MAPPING-START
 
 - Token: KEY
 
 - Token: SCALAR
   Value: "person"
+  Head: "# First document"
 
 - Token: VALUE
 
@@ -56,6 +59,12 @@
 
 - Token: BLOCK-END
 
+- Token: DOCUMENT-END
+
+- Token: STREAM-END
+
+- Token: STREAM-START
+
 - Token: DOCUMENT-START
 
 - Token: BLOCK-MAPPING-START
@@ -64,6 +73,7 @@
 
 - Token: SCALAR
   Value: "settings"
+  Head: "# Second document"
 
 - Token: VALUE
 
@@ -96,26 +106,34 @@
 
 - Token: VALUE
 
-- Token: FLOW-SEQUENCE-START
+- Token: BLOCK-SEQUENCE-START
+
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "feature1"
 
-- Token: FLOW-ENTRY
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "feature2"
 
-- Token: FLOW-ENTRY
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "feature3"
 
-- Token: FLOW-SEQUENCE-END
-
 - Token: BLOCK-END
 
 - Token: BLOCK-END
+
+- Token: BLOCK-END
+
+- Token: DOCUMENT-END
+
+- Token: STREAM-END
+
+- Token: STREAM-START
 
 - Token: DOCUMENT-START
 
@@ -125,6 +143,7 @@
 
 - Token: SCALAR
   Value: "data"
+  Head: "# Third document"
 
 - Token: VALUE
 
@@ -137,32 +156,34 @@
 
 - Token: VALUE
 
-- Token: FLOW-SEQUENCE-START
+- Token: BLOCK-SEQUENCE-START
+
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "1"
 
-- Token: FLOW-ENTRY
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "2"
 
-- Token: FLOW-ENTRY
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "3"
 
-- Token: FLOW-ENTRY
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "4"
 
-- Token: FLOW-ENTRY
+- Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "5"
 
-- Token: FLOW-SEQUENCE-END
+- Token: BLOCK-END
 
 - Token: KEY
 
@@ -188,6 +209,8 @@
 - Token: BLOCK-END
 
 - Token: BLOCK-END
+
+- Token: DOCUMENT-END
 
 - Token: STREAM-END
 

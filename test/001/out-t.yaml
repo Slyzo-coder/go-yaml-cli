@@ -1,5 +1,7 @@
 - Token: STREAM-START
 
+- Token: DOCUMENT-START
+
 - Token: BLOCK-MAPPING-START
 
 - Token: KEY
@@ -57,6 +59,8 @@
   Style: Folded
 
 - Token: BLOCK-END
+
+- Token: DOCUMENT-END
 
 - Token: STREAM-END
 

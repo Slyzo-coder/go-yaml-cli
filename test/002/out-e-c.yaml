@@ -1,6 +1,6 @@
 - {Event: DOCUMENT-START}
 - {Event: MAPPING-START}
-- {Event: SCALAR, Value: "person"}
+- {Event: SCALAR, Value: "person", Head: "# First document"}
 - {Event: MAPPING-START}
 - {Event: SCALAR, Value: "name"}
 - {Event: SCALAR, Value: "John Doe"}
@@ -16,7 +16,7 @@
 - {Event: DOCUMENT-END}
 - {Event: DOCUMENT-START}
 - {Event: MAPPING-START}
-- {Event: SCALAR, Value: "settings"}
+- {Event: SCALAR, Value: "settings", Head: "# Second document"}
 - {Event: MAPPING-START}
 - {Event: SCALAR, Value: "debug"}
 - {Event: SCALAR, Value: "true"}
@@ -33,7 +33,7 @@
 - {Event: DOCUMENT-END}
 - {Event: DOCUMENT-START}
 - {Event: MAPPING-START}
-- {Event: SCALAR, Value: "data"}
+- {Event: SCALAR, Value: "data", Head: "# Third document"}
 - {Event: MAPPING-START}
 - {Event: SCALAR, Value: "numbers"}
 - {Event: SEQUENCE-START, Style: Flow}

@@ -4,6 +4,7 @@
 
 - Event: SCALAR
   Value: "person"
+  Head: "# First document"
 
 - Event: MAPPING-START
 
@@ -44,6 +45,7 @@
 
 - Event: SCALAR
   Value: "settings"
+  Head: "# Second document"
 
 - Event: MAPPING-START
 
@@ -88,6 +90,7 @@
 
 - Event: SCALAR
   Value: "data"
+  Head: "# Third document"
 
 - Event: MAPPING-START
 

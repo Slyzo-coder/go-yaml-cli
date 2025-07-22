@@ -1,6 +1,6 @@
 - {Event: DOCUMENT-START, Pos: {2: 1}}
 - {Event: MAPPING-START, Pos: {2: 1}}
-- {Event: SCALAR, Value: "person", Pos: {2: 1, 2: 7}}
+- {Event: SCALAR, Value: "person", Head: "# First document", Pos: {2: 1, 2: 7}}
 - {Event: MAPPING-START, Pos: {3: 3}}
 - {Event: SCALAR, Value: "name", Pos: {3: 3, 3: 7}}
 - {Event: SCALAR, Value: "John Doe", Pos: {3: 9, 3: 17}}
@@ -16,7 +16,7 @@
 - {Event: DOCUMENT-END, Pos: {2: 1}}
 - {Event: DOCUMENT-START, Pos: {8: 1}}
 - {Event: MAPPING-START, Pos: {10: 1}}
-- {Event: SCALAR, Value: "settings", Pos: {10: 1, 10: 9}}
+- {Event: SCALAR, Value: "settings", Head: "# Second document", Pos: {10: 1, 10: 9}}
 - {Event: MAPPING-START, Pos: {11: 3}}
 - {Event: SCALAR, Value: "debug", Pos: {11: 3, 11: 8}}
 - {Event: SCALAR, Value: "true", Pos: {11: 10, 11: 14}}
@@ -33,7 +33,7 @@
 - {Event: DOCUMENT-END, Pos: {8: 1}}
 - {Event: DOCUMENT-START, Pos: {14: 1}}
 - {Event: MAPPING-START, Pos: {16: 1}}
-- {Event: SCALAR, Value: "data", Pos: {16: 1, 16: 5}}
+- {Event: SCALAR, Value: "data", Head: "# Third document", Pos: {16: 1, 16: 5}}
 - {Event: MAPPING-START, Pos: {17: 3}}
 - {Event: SCALAR, Value: "numbers", Pos: {17: 3, 17: 10}}
 - {Event: SEQUENCE-START, Style: Flow, Pos: {17: 12}}

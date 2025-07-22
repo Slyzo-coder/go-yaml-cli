@@ -6,6 +6,7 @@
 
 - Event: SCALAR
   Value: "person"
+  Head: "# First document"
   Pos: {2: 1, 2: 7}
 
 - Event: MAPPING-START
@@ -62,6 +63,7 @@
 
 - Event: SCALAR
   Value: "settings"
+  Head: "# Second document"
   Pos: {10: 1, 10: 9}
 
 - Event: MAPPING-START
@@ -123,6 +125,7 @@
 
 - Event: SCALAR
   Value: "data"
+  Head: "# Third document"
   Pos: {16: 1, 16: 5}
 
 - Event: MAPPING-START

@@ -187,6 +187,15 @@ func printEventCompact(event *Event, profuse bool) {
 	if event.Style != "" {
 		fmt.Printf(", Style: %s", event.Style)
 	}
+	if event.HeadComment != "" {
+		fmt.Printf(", Head: %q", event.HeadComment)
+	}
+	if event.LineComment != "" {
+		fmt.Printf(", Line: %q", event.LineComment)
+	}
+	if event.FootComment != "" {
+		fmt.Printf(", Foot: %q", event.FootComment)
+	}
 	if profuse {
 		if event.StartLine == event.EndLine && event.StartColumn == event.EndColumn {
 			fmt.Printf(", Pos: {%d: %d}", event.StartLine, event.StartColumn)
@@ -242,6 +251,9 @@ func processNodeToEventsRecursive(node *yaml.Node, profuse bool) []*Event {
 			EndLine:     node.Line,
 			EndColumn:   node.Column,
 			Style:       formatStyle(node.Style),
+			HeadComment: node.HeadComment,
+			LineComment: node.LineComment,
+			FootComment: node.FootComment,
 		})
 		for i := 0; i < len(node.Content); i += 2 {
 			if i+1 < len(node.Content) {
@@ -268,6 +280,9 @@ func processNodeToEventsRecursive(node *yaml.Node, profuse bool) []*Event {
 			EndLine:     node.Line,
 			EndColumn:   node.Column,
 			Style:       formatStyle(node.Style),
+			HeadComment: node.HeadComment,
+			LineComment: node.LineComment,
+			FootComment: node.FootComment,
 		})
 		for _, child := range node.Content {
 			childEvents := processNodeToEventsRecursive(child, profuse)
@@ -302,6 +317,9 @@ func processNodeToEventsRecursive(node *yaml.Node, profuse bool) []*Event {
 			EndLine:     endLine,
 			EndColumn:   endColumn,
 			Style:       formatStyle(node.Style),
+			HeadComment: node.HeadComment,
+			LineComment: node.LineComment,
+			FootComment: node.FootComment,
 		})
 	}
 
@@ -311,16 +329,6 @@ func processNodeToEventsRecursive(node *yaml.Node, profuse bool) []*Event {
 // printEvent prints an event in the expected format
 func printEvent(event *Event, profuse bool) {
 	fmt.Printf("- Event: %v\n", event.Type)
-
-	if event.HeadComment != "" {
-		fmt.Printf("  HeadComment: %q\n", event.HeadComment)
-	}
-	if event.LineComment != "" {
-		fmt.Printf("  LineComment: %q\n", event.LineComment)
-	}
-	if event.FootComment != "" {
-		fmt.Printf("  FootComment: %q\n", event.FootComment)
-	}
 
 	switch event.Type {
 	case EventScalar:
@@ -346,6 +354,16 @@ func printEvent(event *Event, profuse bool) {
 		if event.Anchor != "" {
 			fmt.Printf("  Anchor: %s\n", event.Anchor)
 		}
+	}
+
+	if event.HeadComment != "" {
+		fmt.Printf("  Head: %q\n", event.HeadComment)
+	}
+	if event.LineComment != "" {
+		fmt.Printf("  Line: %q\n", event.LineComment)
+	}
+	if event.FootComment != "" {
+		fmt.Printf("  Foot: %q\n", event.FootComment)
 	}
 
 	if profuse {

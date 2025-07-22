@@ -35,7 +35,7 @@ If you have GOROOT set in your environment, you could use:
 $ make install PREFIX="$GOROOT"
 ```
 
-> Note: `go install github.com/ingydotnet/go-yaml-cli@latest` doesn't work for
+> Note: `go install github.com/yaml/go-yaml-cli@latest` doesn't work for
 > this repo.
 
 

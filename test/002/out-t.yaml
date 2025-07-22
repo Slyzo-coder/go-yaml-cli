@@ -6,7 +6,6 @@
 
 - Token: SCALAR
   Value: "person"
-  Style: Single
 
 - Token: VALUE
 
@@ -16,31 +15,26 @@
 
 - Token: SCALAR
   Value: "name"
-  Style: Single
 
 - Token: VALUE
 
 - Token: SCALAR
   Value: "John Doe"
-  Style: Single
 
 - Token: KEY
 
 - Token: SCALAR
   Value: "age"
-  Style: Single
 
 - Token: VALUE
 
 - Token: SCALAR
   Value: "30"
-  Style: Single
 
 - Token: KEY
 
 - Token: SCALAR
   Value: "hobbies"
-  Style: Single
 
 - Token: VALUE
 
@@ -50,13 +44,11 @@
 
 - Token: SCALAR
   Value: "reading"
-  Style: Single
 
 - Token: BLOCK-ENTRY
 
 - Token: SCALAR
   Value: "hiking"
-  Style: Single
 
 - Token: BLOCK-END
 
@@ -72,7 +64,6 @@
 
 - Token: SCALAR
   Value: "settings"
-  Style: Single
 
 - Token: VALUE
 
@@ -82,31 +73,26 @@
 
 - Token: SCALAR
   Value: "debug"
-  Style: Single
 
 - Token: VALUE
 
 - Token: SCALAR
   Value: "true"
-  Style: Single
 
 - Token: KEY
 
 - Token: SCALAR
   Value: "log_level"
-  Style: Single
 
 - Token: VALUE
 
 - Token: SCALAR
   Value: "INFO"
-  Style: Single
 
 - Token: KEY
 
 - Token: SCALAR
   Value: "features"
-  Style: Single
 
 - Token: VALUE
 
@@ -114,19 +100,16 @@
 
 - Token: SCALAR
   Value: "feature1"
-  Style: Single
 
 - Token: FLOW-ENTRY
 
 - Token: SCALAR
   Value: "feature2"
-  Style: Single
 
 - Token: FLOW-ENTRY
 
 - Token: SCALAR
   Value: "feature3"
-  Style: Single
 
 - Token: FLOW-SEQUENCE-END
 
@@ -142,7 +125,6 @@
 
 - Token: SCALAR
   Value: "data"
-  Style: Single
 
 - Token: VALUE
 
@@ -152,7 +134,6 @@
 
 - Token: SCALAR
   Value: "numbers"
-  Style: Single
 
 - Token: VALUE
 
@@ -160,31 +141,26 @@
 
 - Token: SCALAR
   Value: "1"
-  Style: Single
 
 - Token: FLOW-ENTRY
 
 - Token: SCALAR
   Value: "2"
-  Style: Single
 
 - Token: FLOW-ENTRY
 
 - Token: SCALAR
   Value: "3"
-  Style: Single
 
 - Token: FLOW-ENTRY
 
 - Token: SCALAR
   Value: "4"
-  Style: Single
 
 - Token: FLOW-ENTRY
 
 - Token: SCALAR
   Value: "5"
-  Style: Single
 
 - Token: FLOW-SEQUENCE-END
 
@@ -192,7 +168,6 @@
 
 - Token: SCALAR
   Value: "text"
-  Style: Single
 
 - Token: VALUE
 
@@ -204,13 +179,11 @@
 
 - Token: SCALAR
   Value: "flag"
-  Style: Single
 
 - Token: VALUE
 
 - Token: SCALAR
   Value: "false"
-  Style: Single
 
 - Token: BLOCK-END
 

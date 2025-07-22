@@ -1,23 +1,23 @@
 - {Type: STREAM-START, Pos: {1: 0}}
 - {Type: BLOCK-MAPPING-START, Pos: {1: 0}}
 - {Type: KEY, Pos: {1: 0}}
-- {Type: SCALAR, Value: "a", Style: Single, Pos: {1: 0, 1: 1}}
+- {Type: SCALAR, Value: "a", Pos: {1: 0, 1: 1}}
 - {Type: VALUE, Pos: {1: 1, 1: 2}}
-- {Type: SCALAR, Value: "a", Style: Single, Pos: {1: 3, 1: 4}}
+- {Type: SCALAR, Value: "a", Pos: {1: 3, 1: 4}}
 - {Type: KEY, Pos: {2: 0}}
-- {Type: SCALAR, Value: "b", Style: Single, Pos: {2: 0, 2: 1}}
+- {Type: SCALAR, Value: "b", Pos: {2: 0, 2: 1}}
 - {Type: VALUE, Pos: {2: 1, 2: 2}}
 - {Type: SCALAR, Value: "b", Style: Single, Pos: {2: 3, 2: 6}}
 - {Type: KEY, Pos: {3: 0}}
-- {Type: SCALAR, Value: "c", Style: Single, Pos: {3: 0, 3: 1}}
+- {Type: SCALAR, Value: "c", Pos: {3: 0, 3: 1}}
 - {Type: VALUE, Pos: {3: 1, 3: 2}}
 - {Type: SCALAR, Value: "c", Style: Double, Pos: {3: 3, 3: 6}}
 - {Type: KEY, Pos: {4: 0}}
-- {Type: SCALAR, Value: "d", Style: Single, Pos: {4: 0, 4: 1}}
+- {Type: SCALAR, Value: "d", Pos: {4: 0, 4: 1}}
 - {Type: VALUE, Pos: {4: 1, 4: 2}}
 - {Type: SCALAR, Value: "d", Style: Literal, Pos: {4: 3, 6: 0}}
 - {Type: KEY, Pos: {6: 0}}
-- {Type: SCALAR, Value: "e", Style: Single, Pos: {6: 0, 6: 1}}
+- {Type: SCALAR, Value: "e", Pos: {6: 0, 6: 1}}
 - {Type: VALUE, Pos: {6: 1, 6: 2}}
 - {Type: SCALAR, Value: "e", Style: Folded, Pos: {6: 3, 8: 0}}
 - {Type: BLOCK-END, Pos: {8: 0}}

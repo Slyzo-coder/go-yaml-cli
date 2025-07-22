@@ -1,5 +1,5 @@
 diff --git a/yaml.go b/yaml.go
-index 15c71fa..226ac03 100644
+index 15c71fa..e8f8763 100644
 --- a/yaml.go
 +++ b/yaml.go
 @@ -810,3 +810,156 @@ func formatEvent(e *yaml_event_t) string {
@@ -47,7 +47,7 @@ index 15c71fa..226ac03 100644
 +func scalarStyleToString(style yaml_scalar_style_t) string {
 +	switch style {
 +	case yaml_PLAIN_SCALAR_STYLE:
-+		return "Single"
++		return ""
 +	case yaml_SINGLE_QUOTED_SCALAR_STYLE:
 +		return "Single"
 +	case yaml_DOUBLE_QUOTED_SCALAR_STYLE:

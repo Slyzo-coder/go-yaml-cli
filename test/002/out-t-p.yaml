@@ -9,7 +9,6 @@
 
 - Token: SCALAR
   Value: "person"
-  Style: Single
   Pos: {2: 0, 2: 6}
 
 - Token: VALUE
@@ -23,7 +22,6 @@
 
 - Token: SCALAR
   Value: "name"
-  Style: Single
   Pos: {3: 2, 3: 6}
 
 - Token: VALUE
@@ -31,7 +29,6 @@
 
 - Token: SCALAR
   Value: "John Doe"
-  Style: Single
   Pos: {3: 8, 3: 16}
 
 - Token: KEY
@@ -39,7 +36,6 @@
 
 - Token: SCALAR
   Value: "age"
-  Style: Single
   Pos: {4: 2, 4: 5}
 
 - Token: VALUE
@@ -47,7 +43,6 @@
 
 - Token: SCALAR
   Value: "30"
-  Style: Single
   Pos: {4: 7, 4: 9}
 
 - Token: KEY
@@ -55,7 +50,6 @@
 
 - Token: SCALAR
   Value: "hobbies"
-  Style: Single
   Pos: {5: 2, 5: 9}
 
 - Token: VALUE
@@ -69,7 +63,6 @@
 
 - Token: SCALAR
   Value: "reading"
-  Style: Single
   Pos: {6: 6, 6: 13}
 
 - Token: BLOCK-ENTRY
@@ -77,7 +70,6 @@
 
 - Token: SCALAR
   Value: "hiking"
-  Style: Single
   Pos: {7: 6, 7: 12}
 
 - Token: BLOCK-END
@@ -100,7 +92,6 @@
 
 - Token: SCALAR
   Value: "settings"
-  Style: Single
   Pos: {10: 0, 10: 8}
 
 - Token: VALUE
@@ -114,7 +105,6 @@
 
 - Token: SCALAR
   Value: "debug"
-  Style: Single
   Pos: {11: 2, 11: 7}
 
 - Token: VALUE
@@ -122,7 +112,6 @@
 
 - Token: SCALAR
   Value: "true"
-  Style: Single
   Pos: {11: 9, 11: 13}
 
 - Token: KEY
@@ -130,7 +119,6 @@
 
 - Token: SCALAR
   Value: "log_level"
-  Style: Single
   Pos: {12: 2, 12: 11}
 
 - Token: VALUE
@@ -138,7 +126,6 @@
 
 - Token: SCALAR
   Value: "INFO"
-  Style: Single
   Pos: {12: 13, 12: 17}
 
 - Token: KEY
@@ -146,7 +133,6 @@
 
 - Token: SCALAR
   Value: "features"
-  Style: Single
   Pos: {13: 2, 13: 10}
 
 - Token: VALUE
@@ -157,7 +143,6 @@
 
 - Token: SCALAR
   Value: "feature1"
-  Style: Single
   Pos: {13: 13, 13: 21}
 
 - Token: FLOW-ENTRY
@@ -165,7 +150,6 @@
 
 - Token: SCALAR
   Value: "feature2"
-  Style: Single
   Pos: {13: 23, 13: 31}
 
 - Token: FLOW-ENTRY
@@ -173,7 +157,6 @@
 
 - Token: SCALAR
   Value: "feature3"
-  Style: Single
   Pos: {13: 33, 13: 41}
 
 - Token: FLOW-SEQUENCE-END
@@ -196,7 +179,6 @@
 
 - Token: SCALAR
   Value: "data"
-  Style: Single
   Pos: {16: 0, 16: 4}
 
 - Token: VALUE
@@ -210,7 +192,6 @@
 
 - Token: SCALAR
   Value: "numbers"
-  Style: Single
   Pos: {17: 2, 17: 9}
 
 - Token: VALUE
@@ -221,7 +202,6 @@
 
 - Token: SCALAR
   Value: "1"
-  Style: Single
   Pos: {17: 12, 17: 13}
 
 - Token: FLOW-ENTRY
@@ -229,7 +209,6 @@
 
 - Token: SCALAR
   Value: "2"
-  Style: Single
   Pos: {17: 15, 17: 16}
 
 - Token: FLOW-ENTRY
@@ -237,7 +216,6 @@
 
 - Token: SCALAR
   Value: "3"
-  Style: Single
   Pos: {17: 18, 17: 19}
 
 - Token: FLOW-ENTRY
@@ -245,7 +223,6 @@
 
 - Token: SCALAR
   Value: "4"
-  Style: Single
   Pos: {17: 21, 17: 22}
 
 - Token: FLOW-ENTRY
@@ -253,7 +230,6 @@
 
 - Token: SCALAR
   Value: "5"
-  Style: Single
   Pos: {17: 24, 17: 25}
 
 - Token: FLOW-SEQUENCE-END
@@ -264,7 +240,6 @@
 
 - Token: SCALAR
   Value: "text"
-  Style: Single
   Pos: {18: 2, 18: 6}
 
 - Token: VALUE
@@ -280,7 +255,6 @@
 
 - Token: SCALAR
   Value: "flag"
-  Style: Single
   Pos: {19: 2, 19: 6}
 
 - Token: VALUE
@@ -288,7 +262,6 @@
 
 - Token: SCALAR
   Value: "false"
-  Style: Single
   Pos: {19: 8, 19: 13}
 
 - Token: BLOCK-END

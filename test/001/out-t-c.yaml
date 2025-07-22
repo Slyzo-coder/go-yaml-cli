@@ -1,26 +1,26 @@
-- {Type: STREAM-START}
-- {Type: DOCUMENT-START}
-- {Type: BLOCK-MAPPING-START}
-- {Type: KEY}
-- {Type: SCALAR, Value: "a"}
-- {Type: VALUE}
-- {Type: SCALAR, Value: "a"}
-- {Type: KEY}
-- {Type: SCALAR, Value: "b"}
-- {Type: VALUE}
-- {Type: SCALAR, Value: "b", Style: Single}
-- {Type: KEY}
-- {Type: SCALAR, Value: "c"}
-- {Type: VALUE}
-- {Type: SCALAR, Value: "c", Style: Double}
-- {Type: KEY}
-- {Type: SCALAR, Value: "d"}
-- {Type: VALUE}
-- {Type: SCALAR, Value: "d", Style: Literal}
-- {Type: KEY}
-- {Type: SCALAR, Value: "e"}
-- {Type: VALUE}
-- {Type: SCALAR, Value: "e", Style: Folded}
-- {Type: BLOCK-END}
-- {Type: DOCUMENT-END}
-- {Type: STREAM-END}
+- {Token: STREAM-START}
+- {Token: DOCUMENT-START}
+- {Token: BLOCK-MAPPING-START}
+- {Token: KEY}
+- {Token: SCALAR, Value: "a"}
+- {Token: VALUE}
+- {Token: SCALAR, Value: "a"}
+- {Token: KEY}
+- {Token: SCALAR, Value: "b"}
+- {Token: VALUE}
+- {Token: SCALAR, Value: "b", Style: Single}
+- {Token: KEY}
+- {Token: SCALAR, Value: "c"}
+- {Token: VALUE}
+- {Token: SCALAR, Value: "c", Style: Double}
+- {Token: KEY}
+- {Token: SCALAR, Value: "d"}
+- {Token: VALUE}
+- {Token: SCALAR, Value: "d", Style: Literal}
+- {Token: KEY}
+- {Token: SCALAR, Value: "e"}
+- {Token: VALUE}
+- {Token: SCALAR, Value: "e", Style: Folded}
+- {Token: BLOCK-END}
+- {Token: DOCUMENT-END}
+- {Token: STREAM-END}

@@ -78,7 +78,7 @@ func ProcessTokens(profuse, compact bool) error {
 
 // printTokenCompact prints a token in compact flow style format
 func printTokenCompact(token *Token, profuse bool) {
-	fmt.Print("{Type: ", token.Type)
+	fmt.Print("{Token: ", token.Type)
 	if token.Value != "" {
 		fmt.Printf(", Value: %q", token.Value)
 	}

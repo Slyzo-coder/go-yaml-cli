@@ -1,36 +1,11 @@
 diff --git a/yaml.go b/yaml.go
-index 15c71fa..e8f8763 100644
+index 15c71fa..ca613e5 100644
 --- a/yaml.go
 +++ b/yaml.go
-@@ -810,3 +810,156 @@ func formatEvent(e *yaml_event_t) string {
+@@ -810,3 +810,132 @@ func formatEvent(e *yaml_event_t) string {
  	}
  	return b.String()
  }
-+
-+// Token types for external use
-+const (
-+	EventStreamStart        = "STREAM-START"
-+	EventStreamEnd          = "STREAM-END"
-+	EventDocumentStart      = "DOCUMENT-START"
-+	EventDocumentEnd        = "DOCUMENT-END"
-+	EventBlockSequenceStart = "BLOCK-SEQUENCE-START"
-+	EventBlockMappingStart  = "BLOCK-MAPPING-START"
-+	EventBlockEnd           = "BLOCK-END"
-+	EventFlowSequenceStart  = "FLOW-SEQUENCE-START"
-+	EventFlowSequenceEnd    = "FLOW-SEQUENCE-END"
-+	EventFlowMappingStart   = "FLOW-MAPPING-START"
-+	EventFlowMappingEnd     = "FLOW-MAPPING-END"
-+	EventBlockEntry         = "BLOCK-ENTRY"
-+	EventFlowEntry          = "FLOW-ENTRY"
-+	EventKey                = "KEY"
-+	EventValue              = "VALUE"
-+	EventAlias              = "ALIAS"
-+	EventAnchor             = "ANCHOR"
-+	EventTag                = "TAG"
-+	EventScalar             = "SCALAR"
-+	EventVersionDirective   = "VERSION-DIRECTIVE"
-+	EventTagDirective       = "TAG-DIRECTIVE"
-+)
 +
 +// Token represents a YAML token
 +type Token struct {
@@ -43,11 +18,11 @@ index 15c71fa..e8f8763 100644
 +	EndCol    int
 +}
 +
-+// scalarStyleToString converts a yaml_scalar_style_t to a string representation
++// Convert a yaml_scalar_style_t to a string representation
 +func scalarStyleToString(style yaml_scalar_style_t) string {
 +	switch style {
 +	case yaml_PLAIN_SCALAR_STYLE:
-+		return ""
++		return "Plain"
 +	case yaml_SINGLE_QUOTED_SCALAR_STYLE:
 +		return "Single"
 +	case yaml_DOUBLE_QUOTED_SCALAR_STYLE:
@@ -86,7 +61,8 @@ index 15c71fa..e8f8763 100644
 +	var yamlToken yaml_token_t
 +	if !yaml_parser_scan(&p.parser, &yamlToken) {
 +		if p.parser.error != yaml_NO_ERROR {
-+			return nil, fmt.Errorf("parser error: %v", p.parser.problem)
++			return nil,
++				fmt.Errorf("parser error: %v", p.parser.problem)
 +		}
 +		p.done = true
 +		return nil, nil
@@ -101,53 +77,53 @@ index 15c71fa..e8f8763 100644
 +
 +	switch yamlToken.typ {
 +	case yaml_STREAM_START_TOKEN:
-+		token.Type = EventStreamStart
++		token.Type = "STREAM-START"
 +	case yaml_STREAM_END_TOKEN:
-+		token.Type = EventStreamEnd
++		token.Type = "STREAM-END"
 +		p.done = true
 +	case yaml_DOCUMENT_START_TOKEN:
-+		token.Type = EventDocumentStart
++		token.Type = "DOCUMENT-START"
 +	case yaml_DOCUMENT_END_TOKEN:
-+		token.Type = EventDocumentEnd
++		token.Type = "DOCUMENT-END"
 +	case yaml_BLOCK_SEQUENCE_START_TOKEN:
-+		token.Type = EventBlockSequenceStart
++		token.Type = "BLOCK-SEQUENCE-START"
 +	case yaml_BLOCK_MAPPING_START_TOKEN:
-+		token.Type = EventBlockMappingStart
++		token.Type = "BLOCK-MAPPING-START"
 +	case yaml_BLOCK_END_TOKEN:
-+		token.Type = EventBlockEnd
++		token.Type = "BLOCK-END"
 +	case yaml_FLOW_SEQUENCE_START_TOKEN:
-+		token.Type = EventFlowSequenceStart
++		token.Type = "FLOW-SEQUENCE-START"
 +	case yaml_FLOW_SEQUENCE_END_TOKEN:
-+		token.Type = EventFlowSequenceEnd
++		token.Type = "FLOW-SEQUENCE-END"
 +	case yaml_FLOW_MAPPING_START_TOKEN:
-+		token.Type = EventFlowMappingStart
++		token.Type = "FLOW-MAPPING-START"
 +	case yaml_FLOW_MAPPING_END_TOKEN:
-+		token.Type = EventFlowMappingEnd
++		token.Type = "FLOW-MAPPING-END"
 +	case yaml_BLOCK_ENTRY_TOKEN:
-+		token.Type = EventBlockEntry
++		token.Type = "BLOCK-ENTRY"
 +	case yaml_FLOW_ENTRY_TOKEN:
-+		token.Type = EventFlowEntry
++		token.Type = "FLOW-ENTRY"
 +	case yaml_KEY_TOKEN:
-+		token.Type = EventKey
++		token.Type = "KEY"
 +	case yaml_VALUE_TOKEN:
-+		token.Type = EventValue
++		token.Type = "VALUE"
 +	case yaml_ALIAS_TOKEN:
-+		token.Type = EventAlias
++		token.Type = "ALIAS"
 +		token.Value = string(yamlToken.value)
 +	case yaml_ANCHOR_TOKEN:
-+		token.Type = EventAnchor
++		token.Type = "ANCHOR"
 +		token.Value = string(yamlToken.value)
 +	case yaml_TAG_TOKEN:
-+		token.Type = EventTag
++		token.Type = "TAG"
 +		token.Value = string(yamlToken.value)
 +	case yaml_SCALAR_TOKEN:
-+		token.Type = EventScalar
++		token.Type = "SCALAR"
 +		token.Value = string(yamlToken.value)
 +		token.Style = scalarStyleToString(yamlToken.style)
 +	case yaml_VERSION_DIRECTIVE_TOKEN:
-+		token.Type = EventVersionDirective
++		token.Type = "VERSION-DIRECTIVE"
 +	case yaml_TAG_DIRECTIVE_TOKEN:
-+		token.Type = EventTagDirective
++		token.Type = "TAG-DIRECTIVE"
 +	default:
 +		token.Type = "UNKNOWN"
 +	}

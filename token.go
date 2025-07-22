@@ -62,7 +62,7 @@ func printTokenCompact(token *yaml.Token, profuse bool) {
 	if token.Value != "" {
 		fmt.Printf(", Value: %q", token.Value)
 	}
-	if token.Style != "" {
+	if token.Style != "" && token.Style != "Plain" {
 		fmt.Printf(", Style: %s", token.Style)
 	}
 	if profuse {
@@ -83,7 +83,7 @@ func printToken(token *yaml.Token, profuse bool) {
 		fmt.Printf("  Value: %q\n", token.Value)
 	}
 
-	if token.Style != "" {
+	if token.Style != "" && token.Style != "Plain" {
 		fmt.Printf("  Style: %s\n", token.Style)
 	}
 

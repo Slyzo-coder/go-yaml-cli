@@ -281,6 +281,30 @@ func processNodeToTokensRecursive(node *yaml.Node, profuse bool) []*Token {
 			EndColumn:   node.Column,
 		})
 	case yaml.ScalarNode:
+		// Check for anchor before the scalar
+		if node.Anchor != "" {
+			tokens = append(tokens, &Token{
+				Type:        "ANCHOR",
+				Value:       node.Anchor,
+				StartLine:   node.Line,
+				StartColumn: node.Column,
+				EndLine:     node.Line,
+				EndColumn:   node.Column,
+			})
+		}
+
+		// Check for tag before the scalar
+		if node.Tag != "" && node.Tag != "!!str" && node.Tag != "!!int" && node.Tag != "!!float" && node.Tag != "!!bool" {
+			tokens = append(tokens, &Token{
+				Type:        "TAG",
+				Value:       node.Tag,
+				StartLine:   node.Line,
+				StartColumn: node.Column,
+				EndLine:     node.Line,
+				EndColumn:   node.Column,
+			})
+		}
+
 		// Calculate end position for scalars based on value length
 		endLine := node.Line
 		endColumn := node.Column
@@ -302,6 +326,19 @@ func processNodeToTokensRecursive(node *yaml.Node, profuse bool) []*Token {
 			EndLine:     endLine,
 			EndColumn:   endColumn,
 			Style:       formatStyle(node.Style),
+			HeadComment: node.HeadComment,
+			LineComment: node.LineComment,
+			FootComment: node.FootComment,
+		})
+	case yaml.AliasNode:
+		// Generate ALIAS token for alias nodes
+		tokens = append(tokens, &Token{
+			Type:        "ALIAS",
+			Value:       node.Value,
+			StartLine:   node.Line,
+			StartColumn: node.Column,
+			EndLine:     node.Line,
+			EndColumn:   node.Column,
 			HeadComment: node.HeadComment,
 			LineComment: node.LineComment,
 			FootComment: node.FootComment,

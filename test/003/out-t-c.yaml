@@ -8,20 +8,25 @@
 - {Token: KEY}
 - {Token: SCALAR, Value: name}
 - {Token: VALUE}
+- {Token: ANCHOR, Value: name}
+- {Token: TAG, Value: '!str'}
 - {Token: SCALAR, Value: John Doe}
 - {Token: KEY}
 - {Token: SCALAR, Value: age}
 - {Token: VALUE}
+- {Token: TAG, Value: '!int'}
 - {Token: SCALAR, Value: 30}
 - {Token: KEY}
 - {Token: SCALAR, Value: hobbies}
 - {Token: VALUE}
 - {Token: BLOCK-SEQUENCE-START}
 - {Token: BLOCK-ENTRY}
+- {Token: ANCHOR, Value: sport}
 - {Token: SCALAR, Value: reading}
 - {Token: BLOCK-ENTRY}
 - {Token: SCALAR, Value: hiking}
 - {Token: BLOCK-ENTRY}
+- {Token: ALIAS, Value: sport}
 - {Token: BLOCK-END}
 - {Token: KEY}
 - {Token: SCALAR, Value: address}
@@ -45,7 +50,9 @@
 - {Token: VALUE}
 - {Token: BLOCK-SEQUENCE-START}
 - {Token: BLOCK-ENTRY}
+- {Token: ALIAS, Value: name}
 - {Token: BLOCK-ENTRY}
+- {Token: ALIAS, Value: sport}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
@@ -60,6 +67,7 @@
 - {Token: VALUE}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
+- {Token: ANCHOR, Value: root}
 - {Token: SCALAR, Value: numbers}
 - {Token: VALUE}
 - {Token: BLOCK-SEQUENCE-START}
@@ -85,6 +93,7 @@
 - {Token: KEY}
 - {Token: SCALAR, Value: reference}
 - {Token: VALUE}
+- {Token: ALIAS, Value: root}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: DOCUMENT-END}

@@ -13,12 +13,15 @@
   Pos: '{3: 3, 3: 7}'
 - Event: SCALAR
   Value: John Doe
+  Tag: '!str'
+  Anchor: name
   Pos: '{3: 9, 3: 17}'
 - Event: SCALAR
   Value: age
   Pos: '{4: 3, 4: 6}'
 - Event: SCALAR
   Value: "30"
+  Tag: '!int'
   Pos: '{4: 8, 4: 10}'
 - Event: SCALAR
   Value: hobbies
@@ -27,10 +30,14 @@
   Pos: '{6: 5}'
 - Event: SCALAR
   Value: reading
+  Anchor: sport
   Pos: '{6: 7, 6: 14}'
 - Event: SCALAR
   Value: hiking
   Pos: '{7: 7, 7: 13}'
+- Event: ALIAS
+  Value: sport
+  Pos: '{8: 7}'
 - Event: SEQUENCE-END
   Pos: '{6: 5}'
 - Event: SCALAR
@@ -64,6 +71,12 @@
   Pos: '{13: 3, 13: 10}'
 - Event: SEQUENCE-START
   Pos: '{14: 5}'
+- Event: ALIAS
+  Value: name
+  Pos: '{14: 7}'
+- Event: ALIAS
+  Value: sport
+  Pos: '{15: 7}'
 - Event: SEQUENCE-END
   Pos: '{14: 5}'
 - Event: MAPPING-END
@@ -85,6 +98,7 @@
   Pos: '{19: 3}'
 - Event: SCALAR
   Value: numbers
+  Anchor: root
   Pos: '{19: 3, 19: 10}'
 - Event: SEQUENCE-START
   Style: Flow
@@ -122,6 +136,9 @@
 - Event: SCALAR
   Value: reference
   Pos: '{22: 3, 22: 12}'
+- Event: ALIAS
+  Value: root
+  Pos: '{22: 14}'
 - Event: MAPPING-END
   Pos: '{19: 3}'
 - Event: MAPPING-END

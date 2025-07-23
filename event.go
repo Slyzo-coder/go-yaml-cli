@@ -269,14 +269,36 @@ func processNodeToEventsRecursive(node *yaml.Node, profuse bool) []*Event {
 				endColumn = node.Column
 			}
 		}
+
+		// Filter out default YAML tags
+		tag := node.Tag
+		if tag == "!!str" || tag == "!!int" || tag == "!!float" || tag == "!!bool" {
+			tag = ""
+		}
+
 		events = append(events, &Event{
 			Type:        "SCALAR",
 			Value:       node.Value,
+			Anchor:      node.Anchor,
+			Tag:         tag,
 			StartLine:   node.Line,
 			StartColumn: node.Column,
 			EndLine:     endLine,
 			EndColumn:   endColumn,
 			Style:       formatStyle(node.Style),
+			HeadComment: node.HeadComment,
+			LineComment: node.LineComment,
+			FootComment: node.FootComment,
+		})
+	case yaml.AliasNode:
+		// Generate ALIAS event for alias nodes
+		events = append(events, &Event{
+			Type:        "ALIAS",
+			Value:       node.Value,
+			StartLine:   node.Line,
+			StartColumn: node.Column,
+			EndLine:     node.Line,
+			EndColumn:   node.Column,
 			HeadComment: node.HeadComment,
 			LineComment: node.LineComment,
 			FootComment: node.FootComment,

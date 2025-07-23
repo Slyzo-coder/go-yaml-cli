@@ -3,13 +3,14 @@
 - {Event: SCALAR, Value: person, Head: '# Test anchors, aliases, and tags'}
 - {Event: MAPPING-START}
 - {Event: SCALAR, Value: name}
-- {Event: SCALAR, Value: John Doe}
+- {Event: SCALAR, Value: John Doe, Tag: '!str', Anchor: name}
 - {Event: SCALAR, Value: age}
-- {Event: SCALAR, Value: 30}
+- {Event: SCALAR, Value: 30, Tag: '!int'}
 - {Event: SCALAR, Value: hobbies}
 - {Event: SEQUENCE-START}
-- {Event: SCALAR, Value: reading}
+- {Event: SCALAR, Value: reading, Anchor: sport}
 - {Event: SCALAR, Value: hiking}
+- {Event: ALIAS, Value: sport}
 - {Event: SEQUENCE-END}
 - {Event: SCALAR, Value: address}
 - {Event: MAPPING-START}
@@ -22,6 +23,8 @@
 - {Event: MAPPING-END}
 - {Event: SCALAR, Value: aliases}
 - {Event: SEQUENCE-START}
+- {Event: ALIAS, Value: name}
+- {Event: ALIAS, Value: sport}
 - {Event: SEQUENCE-END}
 - {Event: MAPPING-END}
 - {Event: MAPPING-END}
@@ -31,7 +34,7 @@
 - {Event: MAPPING-START}
 - {Event: SCALAR, Value: data, Head: '# Second document with more complex structures'}
 - {Event: MAPPING-START}
-- {Event: SCALAR, Value: numbers}
+- {Event: SCALAR, Value: numbers, Anchor: root}
 - {Event: SEQUENCE-START, Style: Flow}
 - {Event: SCALAR, Value: 1}
 - {Event: SCALAR, Value: 2}
@@ -44,6 +47,7 @@
 - {Event: SCALAR, Value: flag}
 - {Event: SCALAR, Value: false}
 - {Event: SCALAR, Value: reference}
+- {Event: ALIAS, Value: root}
 - {Event: MAPPING-END}
 - {Event: MAPPING-END}
 - {Event: DOCUMENT-END}

@@ -337,9 +337,9 @@ func formatEventInfo(event *Event, profuse bool) *EventInfo {
 	}
 	if profuse {
 		if event.StartLine == event.EndLine && event.StartColumn == event.EndColumn {
-			info.Pos = fmt.Sprintf("{%d: %d}", event.StartLine, event.StartColumn)
+			info.Pos = fmt.Sprintf("%d;%d", event.StartLine, event.StartColumn)
 		} else {
-			info.Pos = fmt.Sprintf("{%d: %d, %d: %d}", event.StartLine, event.StartColumn, event.EndLine, event.EndColumn)
+			info.Pos = fmt.Sprintf("%d;%d-%d;%d", event.StartLine, event.StartColumn, event.EndLine, event.EndColumn)
 		}
 	}
 

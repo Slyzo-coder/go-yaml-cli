@@ -161,9 +161,9 @@ func formatTokenInfo(token *Token, profuse bool) *TokenInfo {
 	}
 	if profuse {
 		if token.StartLine == token.EndLine && token.StartColumn == token.EndColumn {
-			info.Pos = fmt.Sprintf("{%d: %d}", token.StartLine, token.StartColumn)
+			info.Pos = fmt.Sprintf("%d;%d", token.StartLine, token.StartColumn)
 		} else {
-			info.Pos = fmt.Sprintf("{%d: %d, %d: %d}", token.StartLine, token.StartColumn, token.EndLine, token.EndColumn)
+			info.Pos = fmt.Sprintf("%d;%d-%d;%d", token.StartLine, token.StartColumn, token.EndLine, token.EndColumn)
 		}
 	}
 

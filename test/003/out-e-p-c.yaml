@@ -1,53 +1,53 @@
-- {Event: DOCUMENT-START, Pos: '{2: 1}'}
-- {Event: MAPPING-START, Pos: '{2: 1}'}
-- {Event: SCALAR, Value: person, Head: '# Test anchors, aliases, and tags', Pos: '{2: 1, 2: 7}'}
-- {Event: MAPPING-START, Pos: '{3: 3}'}
-- {Event: SCALAR, Value: name, Pos: '{3: 3, 3: 7}'}
-- {Event: SCALAR, Value: John Doe, Tag: '!str', Anchor: name, Pos: '{3: 9, 3: 17}'}
-- {Event: SCALAR, Value: age, Pos: '{4: 3, 4: 6}'}
-- {Event: SCALAR, Value: 30, Tag: '!int', Pos: '{4: 8, 4: 10}'}
-- {Event: SCALAR, Value: hobbies, Pos: '{5: 3, 5: 10}'}
-- {Event: SEQUENCE-START, Pos: '{6: 5}'}
-- {Event: SCALAR, Value: reading, Anchor: sport, Pos: '{6: 7, 6: 14}'}
-- {Event: SCALAR, Value: hiking, Pos: '{7: 7, 7: 13}'}
-- {Event: ALIAS, Value: sport, Pos: '{8: 7}'}
-- {Event: SEQUENCE-END, Pos: '{6: 5}'}
-- {Event: SCALAR, Value: address, Pos: '{9: 3, 9: 10}'}
-- {Event: MAPPING-START, Pos: '{10: 5}'}
-- {Event: SCALAR, Value: street, Pos: '{10: 5, 10: 11}'}
-- {Event: SCALAR, Value: 123 Main St, Pos: '{10: 13, 10: 24}'}
-- {Event: SCALAR, Value: city, Pos: '{11: 5, 11: 9}'}
-- {Event: SCALAR, Value: Anytown, Pos: '{11: 11, 11: 18}'}
-- {Event: SCALAR, Value: zip, Pos: '{12: 5, 12: 8}'}
-- {Event: SCALAR, Value: 12345, Style: Double, Pos: '{12: 10, 12: 15}'}
-- {Event: MAPPING-END, Pos: '{10: 5}'}
-- {Event: SCALAR, Value: aliases, Pos: '{13: 3, 13: 10}'}
-- {Event: SEQUENCE-START, Pos: '{14: 5}'}
-- {Event: ALIAS, Value: name, Pos: '{14: 7}'}
-- {Event: ALIAS, Value: sport, Pos: '{15: 7}'}
-- {Event: SEQUENCE-END, Pos: '{14: 5}'}
-- {Event: MAPPING-END, Pos: '{3: 3}'}
-- {Event: MAPPING-END, Pos: '{2: 1}'}
-- {Event: DOCUMENT-END, Pos: '{2: 1}'}
+- {Event: DOCUMENT-START, Pos: 2;1}
+- {Event: MAPPING-START, Pos: 2;1}
+- {Event: SCALAR, Value: person, Head: '# Test anchors, aliases, and tags', Pos: 2;1-2;7}
+- {Event: MAPPING-START, Pos: 3;3}
+- {Event: SCALAR, Value: name, Pos: 3;3-3;7}
+- {Event: SCALAR, Value: John Doe, Tag: '!str', Anchor: name, Pos: 3;9-3;17}
+- {Event: SCALAR, Value: age, Pos: 4;3-4;6}
+- {Event: SCALAR, Value: 30, Tag: '!int', Pos: 4;8-4;10}
+- {Event: SCALAR, Value: hobbies, Pos: 5;3-5;10}
+- {Event: SEQUENCE-START, Pos: 6;5}
+- {Event: SCALAR, Value: reading, Anchor: sport, Pos: 6;7-6;14}
+- {Event: SCALAR, Value: hiking, Pos: 7;7-7;13}
+- {Event: ALIAS, Value: sport, Pos: 8;7}
+- {Event: SEQUENCE-END, Pos: 6;5}
+- {Event: SCALAR, Value: address, Pos: 9;3-9;10}
+- {Event: MAPPING-START, Pos: 10;5}
+- {Event: SCALAR, Value: street, Pos: 10;5-10;11}
+- {Event: SCALAR, Value: 123 Main St, Pos: 10;13-10;24}
+- {Event: SCALAR, Value: city, Pos: 11;5-11;9}
+- {Event: SCALAR, Value: Anytown, Pos: 11;11-11;18}
+- {Event: SCALAR, Value: zip, Pos: 12;5-12;8}
+- {Event: SCALAR, Value: 12345, Style: Double, Pos: 12;10-12;15}
+- {Event: MAPPING-END, Pos: 10;5}
+- {Event: SCALAR, Value: aliases, Pos: 13;3-13;10}
+- {Event: SEQUENCE-START, Pos: 14;5}
+- {Event: ALIAS, Value: name, Pos: 14;7}
+- {Event: ALIAS, Value: sport, Pos: 15;7}
+- {Event: SEQUENCE-END, Pos: 14;5}
+- {Event: MAPPING-END, Pos: 3;3}
+- {Event: MAPPING-END, Pos: 2;1}
+- {Event: DOCUMENT-END, Pos: 2;1}
 ---
-- {Event: DOCUMENT-START, Pos: '{16: 1}'}
-- {Event: MAPPING-START, Pos: '{18: 1}'}
-- {Event: SCALAR, Value: data, Head: '# Second document with more complex structures', Pos: '{18: 1, 18: 5}'}
-- {Event: MAPPING-START, Pos: '{19: 3}'}
-- {Event: SCALAR, Value: numbers, Anchor: root, Pos: '{19: 3, 19: 10}'}
-- {Event: SEQUENCE-START, Style: Flow, Pos: '{19: 18}'}
-- {Event: SCALAR, Value: 1, Pos: '{19: 19, 19: 20}'}
-- {Event: SCALAR, Value: 2, Pos: '{19: 22, 19: 23}'}
-- {Event: SCALAR, Value: 3, Pos: '{19: 25, 19: 26}'}
-- {Event: SCALAR, Value: 4, Pos: '{19: 28, 19: 29}'}
-- {Event: SCALAR, Value: 5, Pos: '{19: 31, 19: 32}'}
-- {Event: SEQUENCE-END, Pos: '{19: 18}'}
-- {Event: SCALAR, Value: text, Pos: '{20: 3, 20: 7}'}
-- {Event: SCALAR, Value: 'Hello, World!', Style: Double, Pos: '{20: 9, 20: 22}'}
-- {Event: SCALAR, Value: flag, Pos: '{21: 3, 21: 7}'}
-- {Event: SCALAR, Value: false, Pos: '{21: 9, 21: 14}'}
-- {Event: SCALAR, Value: reference, Pos: '{22: 3, 22: 12}'}
-- {Event: ALIAS, Value: root, Pos: '{22: 14}'}
-- {Event: MAPPING-END, Pos: '{19: 3}'}
-- {Event: MAPPING-END, Pos: '{18: 1}'}
-- {Event: DOCUMENT-END, Pos: '{16: 1}'}
+- {Event: DOCUMENT-START, Pos: 16;1}
+- {Event: MAPPING-START, Pos: 18;1}
+- {Event: SCALAR, Value: data, Head: '# Second document with more complex structures', Pos: 18;1-18;5}
+- {Event: MAPPING-START, Pos: 19;3}
+- {Event: SCALAR, Value: numbers, Anchor: root, Pos: 19;3-19;10}
+- {Event: SEQUENCE-START, Style: Flow, Pos: 19;18}
+- {Event: SCALAR, Value: 1, Pos: 19;19-19;20}
+- {Event: SCALAR, Value: 2, Pos: 19;22-19;23}
+- {Event: SCALAR, Value: 3, Pos: 19;25-19;26}
+- {Event: SCALAR, Value: 4, Pos: 19;28-19;29}
+- {Event: SCALAR, Value: 5, Pos: 19;31-19;32}
+- {Event: SEQUENCE-END, Pos: 19;18}
+- {Event: SCALAR, Value: text, Pos: 20;3-20;7}
+- {Event: SCALAR, Value: 'Hello, World!', Style: Double, Pos: 20;9-20;22}
+- {Event: SCALAR, Value: flag, Pos: 21;3-21;7}
+- {Event: SCALAR, Value: false, Pos: 21;9-21;14}
+- {Event: SCALAR, Value: reference, Pos: 22;3-22;12}
+- {Event: ALIAS, Value: root, Pos: 22;14}
+- {Event: MAPPING-END, Pos: 19;3}
+- {Event: MAPPING-END, Pos: 18;1}
+- {Event: DOCUMENT-END, Pos: 16;1}

@@ -143,7 +143,7 @@ func TestPrettyJSONMode(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			stdout, stderr, err := runCommand(tt.input, "-j", "-p")
+			stdout, stderr, err := runCommand(tt.input, "-J")
 
 			if tt.expectError {
 				if err == nil {

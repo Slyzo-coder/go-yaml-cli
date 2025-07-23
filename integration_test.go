@@ -16,10 +16,10 @@ func TestAllModesWithInlineYAML(t *testing.T) {
 		{"event", []string{"-e"}},
 		{"token", []string{"-t"}},
 		{"json", []string{"-j"}},
-		{"json_pretty", []string{"-j", "-p"}},
+		{"json_pretty", []string{"-J"}},
 		{"json_capital_j", []string{"-J"}},
 		{"yaml", []string{"-y"}},
-		{"yaml_preserve", []string{"--preserve"}},
+		{"yaml_preserve", []string{"-Y"}},
 		{"yaml_capital_y", []string{"-Y"}},
 	}
 
@@ -93,7 +93,7 @@ settings:
 		},
 		{
 			"json mode with pretty",
-			[]string{"-j", "-p"},
+			[]string{"-J"},
 			[]string{`"person": {`, `"name": "John Doe"`, `"age": 30`, `"hobbies": [`, `"reading"`, `"hiking"`, `"running"`},
 		},
 		{
@@ -108,7 +108,7 @@ settings:
 		},
 		{
 			"yaml mode with preserve",
-			[]string{"--preserve"},
+			[]string{"-Y"},
 			[]string{"person:", "name: &name John Doe", "age: 30", "hobbies:", "reading", "hiking", "running"},
 		},
 		{

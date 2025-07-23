@@ -19,47 +19,43 @@ const version = "3.0.3.1"
 // main reads YAML from stdin, parses it, and outputs the node structure
 func main() {
 	// Parse command line flags
-	showHelp := flag.Bool("h", false, "Show help information")
+	showHelp := flag.Bool("h", false, "Show this help information")
 	showVersion := flag.Bool("version", false, "Show version information")
 
 	// YAML modes
-	yamlMode := flag.Bool("y", false, "YAML formatting mode")
-	yamlPreserveMode := flag.Bool("Y", false, "YAML Preserve; short for -y -p")
+	yamlMode := flag.Bool("y", false, "YAML encoding output")
+	yamlPreserveMode := flag.Bool("Y", false, "YAML style and comments preserved")
 
 	// JSON modes
-	jsonMode := flag.Bool("j", false, "JSON formatting mode (compact)")
-	jsonPrettyMode := flag.Bool("J", false, "JSON Pretty; short for -j -p")
+	jsonMode := flag.Bool("j", false, "JSON compact output")
+	jsonPrettyMode := flag.Bool("J", false, "JSON pretty output")
 
 	// Token modes
-	tokenMode := flag.Bool("t", false, "Token formatting mode")
-	tokenProfuseMode := flag.Bool("T", false, "Token Profuse; short for -t -p")
+	tokenMode := flag.Bool("t", false, "Token output")
+	tokenProfuseMode := flag.Bool("T", false, "Token with line info")
 
 	// Event modes
-	eventMode := flag.Bool("e", false, "Event formatting mode")
-	eventProfuseMode := flag.Bool("E", false, "Event Profuse; short for -e -p")
+	eventMode := flag.Bool("e", false, "Event output")
+	eventProfuseMode := flag.Bool("E", false, "Event with line info")
 
 	// Node mode
-	nodeMode := flag.Bool("n", false, "Node formatting mode")
+	nodeMode := flag.Bool("n", false, "Node representation output")
 
 	// Shared flags
-	preserveMode := flag.Bool("p", false, "Preserve comments and styles (with -y)")
-	prettyMode := flag.Bool("pretty", false, "Pretty JSON output (with -j)")
-	profuseMode := flag.Bool("profuse", false, "Show line info for --token and --event")
-	longMode := flag.Bool("l", false, "Long output (block style, with blank lines)")
+	longMode := flag.Bool("l", false, "Long (block) formatted output")
 
 	// Long flag aliases
-	flag.BoolVar(showHelp, "help", false, "Show help information")
-	flag.BoolVar(yamlMode, "yaml", false, "YAML formatting mode")
-	flag.BoolVar(yamlPreserveMode, "YAML", false, "YAML Preserve; short for -y -p")
-	flag.BoolVar(jsonMode, "json", false, "JSON formatting mode (compact)")
-	flag.BoolVar(jsonPrettyMode, "JSON", false, "JSON Pretty; short for -j -p")
-	flag.BoolVar(tokenMode, "token", false, "Token formatting mode")
-	flag.BoolVar(tokenProfuseMode, "TOKEN", false, "Token Profuse; short for -t -p")
-	flag.BoolVar(eventMode, "event", false, "Event formatting mode")
-	flag.BoolVar(eventProfuseMode, "EVENT", false, "Event Profuse; short for -e -p")
-	flag.BoolVar(nodeMode, "node", false, "Node formatting mode")
-	flag.BoolVar(preserveMode, "preserve", false, "Preserve comments and styles (with -y)")
-	flag.BoolVar(longMode, "long", false, "Long output (block style, with blank lines)")
+	flag.BoolVar(showHelp, "help", false, "Show this help information")
+	flag.BoolVar(yamlMode, "yaml", false, "YAML encoding output")
+	flag.BoolVar(yamlPreserveMode, "YAML", false, "YAML style and comments preserved")
+	flag.BoolVar(jsonMode, "json", false, "JSON compact output")
+	flag.BoolVar(jsonPrettyMode, "JSON", false, "JSON pretty output")
+	flag.BoolVar(tokenMode, "token", false, "Token output")
+	flag.BoolVar(tokenProfuseMode, "TOKEN", false, "Token with line info")
+	flag.BoolVar(eventMode, "event", false, "Event output")
+	flag.BoolVar(eventProfuseMode, "EVENT", false, "Event with line info")
+	flag.BoolVar(nodeMode, "node", false, "Node representation output")
+	flag.BoolVar(longMode, "long", false, "Long (block) formatted output")
 
 	flag.Parse()
 
@@ -82,23 +78,22 @@ func main() {
 	}
 
 	// If no stdin and no flags, show help
-	if (stat.Mode()&os.ModeCharDevice) != 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*preserveMode && !*longMode {
+	if (stat.Mode()&os.ModeCharDevice) != 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*longMode {
 		printHelp()
 		return
 	}
 
 	// Error if stdin has data but no mode flags are provided
-	if (stat.Mode()&os.ModeCharDevice) == 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*preserveMode && !*longMode {
-		fmt.Fprintf(os.Stderr, "Error: stdin has data but no mode specified. Use -n/--node, -e/--event, -E/--EVENT, -t/--token, -T/--TOKEN, -j/--json, -J/--JSON, -y/--yaml, -Y/--YAML, or --preserve flag.\n")
+	if (stat.Mode()&os.ModeCharDevice) == 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*longMode {
+		fmt.Fprintf(os.Stderr, "Error: stdin has data but no mode specified. Use -n/--node, -e/--event, -E/--EVENT, -t/--token, -T/--TOKEN, -j/--json, -J/--JSON, -y/--yaml, -Y/--YAML flag.\n")
 		os.Exit(1)
 	}
 
 	// Process YAML input
 	if *eventMode {
-		// Use event formatting mode
-		profuse := *profuseMode || *preserveMode // -p means profuse for event mode
-		compact := !*longMode                    // compact is default, long mode negates it
-		if err := ProcessEvents(profuse, compact); err != nil {
+		// Use event formatting mode (compact by default)
+		compact := !*longMode // compact is default, long mode negates it
+		if err := ProcessEvents(false, compact); err != nil {
 			log.Fatal("Failed to process events:", err)
 		}
 	} else if *eventProfuseMode {
@@ -108,10 +103,9 @@ func main() {
 			log.Fatal("Failed to process events:", err)
 		}
 	} else if *tokenMode {
-		// Use token formatting mode
-		profuse := *profuseMode || *preserveMode // -p means profuse for token mode
-		compact := !*longMode                    // compact is default, long mode negates it
-		if err := ProcessTokens(profuse, compact); err != nil {
+		// Use token formatting mode (compact by default)
+		compact := !*longMode // compact is default, long mode negates it
+		if err := ProcessTokens(false, compact); err != nil {
 			log.Fatal("Failed to process tokens:", err)
 		}
 	} else if *tokenProfuseMode {
@@ -122,8 +116,7 @@ func main() {
 		}
 	} else if *jsonMode {
 		// Use JSON formatting mode (compact by default)
-		pretty := *prettyMode || *preserveMode // -p means pretty for JSON mode
-		if err := ProcessJSON(pretty); err != nil {
+		if err := ProcessJSON(false); err != nil {
 			log.Fatal("Failed to process JSON:", err)
 		}
 	} else if *jsonPrettyMode {
@@ -133,17 +126,11 @@ func main() {
 		}
 	} else if *yamlMode {
 		// Use YAML formatting mode (clean by default)
-		preserve := *preserveMode // -p means preserve for YAML mode
-		if err := ProcessYAML(preserve); err != nil {
+		if err := ProcessYAML(false); err != nil {
 			log.Fatal("Failed to process YAML:", err)
 		}
 	} else if *yamlPreserveMode {
 		// Use YAML formatting mode with preserve
-		if err := ProcessYAML(true); err != nil {
-			log.Fatal("Failed to process YAML:", err)
-		}
-	} else if *preserveMode {
-		// Use YAML formatting mode with preserve (--preserve flag)
 		if err := ProcessYAML(true); err != nil {
 			log.Fatal("Failed to process YAML:", err)
 		}
@@ -195,24 +182,21 @@ Usage:
   go-yaml [options] < input.yaml
 
 Options:
-  -y, --yaml       YAML formatting mode
-  -Y, --YAML       YAML Preserve; short for -y -p
+  -y, --yaml       YAML encoding output
+  -Y, --YAML       YAML style and comments preserved
 
-  -j, --json       JSON formatting mode (compact)
-  -J, --JSON       JSON Pretty; short for -j -p
+  -j, --json       JSON compact output
+  -J, --JSON       JSON pretty output
 
-  -t, --token      Token formatting mode
-  -T, --TOKEN      Token Profuse; short for -t -p
+  -t, --token      Token output
+  -T, --TOKEN      Token with line info
 
-  -e, --event      Event formatting mode
-  -E, --EVENT      Event Profuse; short for -e -p
+  -e, --event      Event output
+  -E, --EVENT      Event with line info
 
-  -n, --node       Node formatting mode
+  -n, --node       Node representation output
 
-  -p, --preserve   Preserve comments and styles (with -y)
-  -p, --pretty     Pretty JSON output (with -j)
-  -p, --profuse    Show line info for --token and --event
-  -l, --long       Long output (block style)
+  -l, --long       Long (block) formatted output
 
   -h, --help       Show this help information
   --version        Show version information

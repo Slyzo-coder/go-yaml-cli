@@ -48,7 +48,7 @@ func runFileBasedTest(t *testing.T, testDir string) {
 		flagPart := strings.TrimPrefix(baseName, "out-")
 		flagPart = strings.TrimSuffix(flagPart, ".yaml")
 
-		flags := parseFlagsFromFilename(flagPart)
+		flags := mapLegacyFlags(flagPart)
 
 		t.Run(flagPart, func(t *testing.T) {
 			// Read expected output
@@ -99,7 +99,9 @@ func parseFlagsFromFilename(flagPart string) []string {
 		case "y":
 			flags = append(flags, "-y")
 		case "p":
-			flags = append(flags, "-p")
+			// This is for backward compatibility with test file names
+			// The actual flags are now capital letters (Y, J, T, E)
+			// We'll handle this in the test logic
 		case "l":
 			flags = append(flags, "-l")
 		case "E":
@@ -114,4 +116,26 @@ func parseFlagsFromFilename(flagPart string) []string {
 	}
 
 	return flags
+}
+
+// mapLegacyFlags maps legacy -p flags to their capital letter equivalents
+func mapLegacyFlags(flagPart string) []string {
+	// Map common patterns to their new equivalents
+	switch flagPart {
+	case "y-p":
+		return []string{"-Y"}
+	case "j-p":
+		return []string{"-J"}
+	case "t-p":
+		return []string{"-T"}
+	case "e-p":
+		return []string{"-E"}
+	case "e-p-l":
+		return []string{"-E", "-l"}
+	case "t-p-l":
+		return []string{"-T", "-l"}
+	default:
+		// For other cases, just parse normally
+		return parseFlagsFromFilename(flagPart)
+	}
 }

@@ -1,0 +1,22 @@
+# Test anchors, aliases, and tags
+person:
+  name: &name !str John Doe
+  age: !int 30
+  hobbies:
+    - &sport reading
+    - hiking
+    - *sport
+  address:
+    street: 123 Main St
+    city: Anytown
+    zip: "12345"
+  aliases:
+    - *name
+    - *sport
+---
+# Second document with more complex structures
+data:
+  &root numbers: [1, 2, 3, 4, 5]
+  text: "Hello, World!"
+  flag: false
+  reference: *root

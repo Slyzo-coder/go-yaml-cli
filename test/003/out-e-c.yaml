@@ -1,0 +1,49 @@
+- {Event: DOCUMENT-START}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: person, Head: '# Test anchors, aliases, and tags'}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: name}
+- {Event: SCALAR, Value: John Doe}
+- {Event: SCALAR, Value: age}
+- {Event: SCALAR, Value: 30}
+- {Event: SCALAR, Value: hobbies}
+- {Event: SEQUENCE-START}
+- {Event: SCALAR, Value: reading}
+- {Event: SCALAR, Value: hiking}
+- {Event: SEQUENCE-END}
+- {Event: SCALAR, Value: address}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: street}
+- {Event: SCALAR, Value: 123 Main St}
+- {Event: SCALAR, Value: city}
+- {Event: SCALAR, Value: Anytown}
+- {Event: SCALAR, Value: zip}
+- {Event: SCALAR, Value: 12345, Style: Double}
+- {Event: MAPPING-END}
+- {Event: SCALAR, Value: aliases}
+- {Event: SEQUENCE-START}
+- {Event: SEQUENCE-END}
+- {Event: MAPPING-END}
+- {Event: MAPPING-END}
+- {Event: DOCUMENT-END}
+---
+- {Event: DOCUMENT-START}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: data, Head: '# Second document with more complex structures'}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: numbers}
+- {Event: SEQUENCE-START, Style: Flow}
+- {Event: SCALAR, Value: 1}
+- {Event: SCALAR, Value: 2}
+- {Event: SCALAR, Value: 3}
+- {Event: SCALAR, Value: 4}
+- {Event: SCALAR, Value: 5}
+- {Event: SEQUENCE-END}
+- {Event: SCALAR, Value: text}
+- {Event: SCALAR, Value: 'Hello, World!', Style: Double}
+- {Event: SCALAR, Value: flag}
+- {Event: SCALAR, Value: false}
+- {Event: SCALAR, Value: reference}
+- {Event: MAPPING-END}
+- {Event: MAPPING-END}
+- {Event: DOCUMENT-END}

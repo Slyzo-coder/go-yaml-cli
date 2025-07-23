@@ -54,32 +54,8 @@ endif
 update-patch: $(GO-YAML-REPO-DIR)
 	git -C $< diff > $(GO-YAML-PATCH)
 
-ifndef tnum
-gen-test-files:
-	@echo "tnum is not set"
-	@exit 1
-else ifeq (,$(wildcard test/$(tnum)/in.yaml))
-gen-test-files:
-	@echo "test/$(tnum)/in.yaml does not exist"
-	@exit 1
-else
 gen-test-files: $(PROGRAM)
-	<test/$(tnum)/in.yaml $< -y       > test/$(tnum)/out-y.yaml
-	<test/$(tnum)/in.yaml $< -y -p    > test/$(tnum)/out-y-p.yaml
-	<test/$(tnum)/in.yaml $< -j       > test/$(tnum)/out-j.yaml
-	<test/$(tnum)/in.yaml $< -j -p    > test/$(tnum)/out-j-p.yaml
-	<test/$(tnum)/in.yaml $< -t       > test/$(tnum)/out-t.yaml
-	<test/$(tnum)/in.yaml $< -t -p    > test/$(tnum)/out-t-p.yaml
-	<test/$(tnum)/in.yaml $< -e       > test/$(tnum)/out-e.yaml
-	<test/$(tnum)/in.yaml $< -e -p    > test/$(tnum)/out-e-p.yaml
-	<test/$(tnum)/in.yaml $< -e -c    > test/$(tnum)/out-e-c.yaml
-	<test/$(tnum)/in.yaml $< -e -p -c > test/$(tnum)/out-e-p-c.yaml
-	<test/$(tnum)/in.yaml $< -t       > test/$(tnum)/out-t.yaml
-	<test/$(tnum)/in.yaml $< -t -p    > test/$(tnum)/out-t-p.yaml
-	<test/$(tnum)/in.yaml $< -t -c    > test/$(tnum)/out-t-c.yaml
-	<test/$(tnum)/in.yaml $< -t -p -c > test/$(tnum)/out-t-p-c.yaml
-	<test/$(tnum)/in.yaml $< -n       > test/$(tnum)/out-n.yaml
-endif
+	bin/gen-test-files
 
 
 $(PROGRAM): $(DEPS)

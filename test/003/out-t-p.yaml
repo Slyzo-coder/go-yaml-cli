@@ -1,0 +1,213 @@
+- Token: STREAM-START
+  Pos: '{0: 0}'
+- Token: DOCUMENT-START
+  Pos: '{0: 0}'
+- Token: BLOCK-MAPPING-START
+  Pos: '{2: 1}'
+- Token: KEY
+  Pos: '{2: 1}'
+- Token: SCALAR
+  Value: person
+  Head: '# Test anchors, aliases, and tags'
+  Pos: '{2: 1, 2: 7}'
+- Token: VALUE
+  Pos: '{3: 3}'
+- Token: BLOCK-MAPPING-START
+  Pos: '{3: 3}'
+- Token: KEY
+  Pos: '{3: 3}'
+- Token: SCALAR
+  Value: name
+  Pos: '{3: 3, 3: 7}'
+- Token: VALUE
+  Pos: '{3: 9}'
+- Token: SCALAR
+  Value: John Doe
+  Pos: '{3: 9, 3: 17}'
+- Token: KEY
+  Pos: '{4: 3}'
+- Token: SCALAR
+  Value: age
+  Pos: '{4: 3, 4: 6}'
+- Token: VALUE
+  Pos: '{4: 8}'
+- Token: SCALAR
+  Value: "30"
+  Pos: '{4: 8, 4: 10}'
+- Token: KEY
+  Pos: '{5: 3}'
+- Token: SCALAR
+  Value: hobbies
+  Pos: '{5: 3, 5: 10}'
+- Token: VALUE
+  Pos: '{6: 5}'
+- Token: BLOCK-SEQUENCE-START
+  Pos: '{6: 5}'
+- Token: BLOCK-ENTRY
+  Pos: '{6: 7}'
+- Token: SCALAR
+  Value: reading
+  Pos: '{6: 7, 6: 14}'
+- Token: BLOCK-ENTRY
+  Pos: '{7: 7}'
+- Token: SCALAR
+  Value: hiking
+  Pos: '{7: 7, 7: 13}'
+- Token: BLOCK-ENTRY
+  Pos: '{8: 7}'
+- Token: BLOCK-END
+  Pos: '{6: 5}'
+- Token: KEY
+  Pos: '{9: 3}'
+- Token: SCALAR
+  Value: address
+  Pos: '{9: 3, 9: 10}'
+- Token: VALUE
+  Pos: '{10: 5}'
+- Token: BLOCK-MAPPING-START
+  Pos: '{10: 5}'
+- Token: KEY
+  Pos: '{10: 5}'
+- Token: SCALAR
+  Value: street
+  Pos: '{10: 5, 10: 11}'
+- Token: VALUE
+  Pos: '{10: 13}'
+- Token: SCALAR
+  Value: 123 Main St
+  Pos: '{10: 13, 10: 24}'
+- Token: KEY
+  Pos: '{11: 5}'
+- Token: SCALAR
+  Value: city
+  Pos: '{11: 5, 11: 9}'
+- Token: VALUE
+  Pos: '{11: 11}'
+- Token: SCALAR
+  Value: Anytown
+  Pos: '{11: 11, 11: 18}'
+- Token: KEY
+  Pos: '{12: 5}'
+- Token: SCALAR
+  Value: zip
+  Pos: '{12: 5, 12: 8}'
+- Token: VALUE
+  Pos: '{12: 10}'
+- Token: SCALAR
+  Value: "12345"
+  Style: Double
+  Pos: '{12: 10, 12: 15}'
+- Token: BLOCK-END
+  Pos: '{10: 5}'
+- Token: KEY
+  Pos: '{13: 3}'
+- Token: SCALAR
+  Value: aliases
+  Pos: '{13: 3, 13: 10}'
+- Token: VALUE
+  Pos: '{14: 5}'
+- Token: BLOCK-SEQUENCE-START
+  Pos: '{14: 5}'
+- Token: BLOCK-ENTRY
+  Pos: '{14: 7}'
+- Token: BLOCK-ENTRY
+  Pos: '{15: 7}'
+- Token: BLOCK-END
+  Pos: '{14: 5}'
+- Token: BLOCK-END
+  Pos: '{3: 3}'
+- Token: BLOCK-END
+  Pos: '{2: 1}'
+- Token: DOCUMENT-END
+  Pos: '{0: 0}'
+- Token: STREAM-END
+  Pos: '{0: 0}'
+---
+- Token: STREAM-START
+  Pos: '{0: 0}'
+- Token: DOCUMENT-START
+  Pos: '{0: 0}'
+- Token: BLOCK-MAPPING-START
+  Pos: '{18: 1}'
+- Token: KEY
+  Pos: '{18: 1}'
+- Token: SCALAR
+  Value: data
+  Head: '# Second document with more complex structures'
+  Pos: '{18: 1, 18: 5}'
+- Token: VALUE
+  Pos: '{19: 3}'
+- Token: BLOCK-MAPPING-START
+  Pos: '{19: 3}'
+- Token: KEY
+  Pos: '{19: 3}'
+- Token: SCALAR
+  Value: numbers
+  Pos: '{19: 3, 19: 10}'
+- Token: VALUE
+  Pos: '{19: 18}'
+- Token: BLOCK-SEQUENCE-START
+  Pos: '{19: 18}'
+- Token: BLOCK-ENTRY
+  Pos: '{19: 19}'
+- Token: SCALAR
+  Value: "1"
+  Pos: '{19: 19, 19: 20}'
+- Token: BLOCK-ENTRY
+  Pos: '{19: 22}'
+- Token: SCALAR
+  Value: "2"
+  Pos: '{19: 22, 19: 23}'
+- Token: BLOCK-ENTRY
+  Pos: '{19: 25}'
+- Token: SCALAR
+  Value: "3"
+  Pos: '{19: 25, 19: 26}'
+- Token: BLOCK-ENTRY
+  Pos: '{19: 28}'
+- Token: SCALAR
+  Value: "4"
+  Pos: '{19: 28, 19: 29}'
+- Token: BLOCK-ENTRY
+  Pos: '{19: 31}'
+- Token: SCALAR
+  Value: "5"
+  Pos: '{19: 31, 19: 32}'
+- Token: BLOCK-END
+  Pos: '{19: 18}'
+- Token: KEY
+  Pos: '{20: 3}'
+- Token: SCALAR
+  Value: text
+  Pos: '{20: 3, 20: 7}'
+- Token: VALUE
+  Pos: '{20: 9}'
+- Token: SCALAR
+  Value: Hello, World!
+  Style: Double
+  Pos: '{20: 9, 20: 22}'
+- Token: KEY
+  Pos: '{21: 3}'
+- Token: SCALAR
+  Value: flag
+  Pos: '{21: 3, 21: 7}'
+- Token: VALUE
+  Pos: '{21: 9}'
+- Token: SCALAR
+  Value: "false"
+  Pos: '{21: 9, 21: 14}'
+- Token: KEY
+  Pos: '{22: 3}'
+- Token: SCALAR
+  Value: reference
+  Pos: '{22: 3, 22: 12}'
+- Token: VALUE
+  Pos: '{22: 14}'
+- Token: BLOCK-END
+  Pos: '{19: 3}'
+- Token: BLOCK-END
+  Pos: '{18: 1}'
+- Token: DOCUMENT-END
+  Pos: '{0: 0}'
+- Token: STREAM-END
+  Pos: '{0: 0}'

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for tnum in $(cd test && echo *); do
+  (
+    set -x
+    <"test/$tnum/in.yaml" ./go-yaml -y       > test/$tnum/out-y.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -y -p    > test/$tnum/out-y-p.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -j       > test/$tnum/out-j.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -j -p    > test/$tnum/out-j-p.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t       > test/$tnum/out-t.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t -p    > test/$tnum/out-t-p.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -e       > test/$tnum/out-e.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -e -p    > test/$tnum/out-e-p.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -e -c    > test/$tnum/out-e-c.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -e -p -c > test/$tnum/out-e-p-c.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t       > test/$tnum/out-t.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t -p    > test/$tnum/out-t-p.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t -c    > test/$tnum/out-t-c.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t -p -c > test/$tnum/out-t-p-c.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -n       > test/$tnum/out-n.yaml
+  )
+done

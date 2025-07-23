@@ -76,8 +76,6 @@ func formatKind(k yaml.Kind) string {
 // formatStyle converts a YAML node style into its string representation.
 func formatStyle(s yaml.Style) string {
 	switch s {
-	case yaml.TaggedStyle:
-		return "Tagged"
 	case yaml.DoubleQuotedStyle:
 		return "Double"
 	case yaml.SingleQuotedStyle:

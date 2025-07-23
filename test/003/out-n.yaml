@@ -1,0 +1,97 @@
+kind: Document
+content:
+  - kind: Mapping
+    content:
+      - kind: Scalar
+        head: '# Test anchors, aliases, and tags'
+        text: person
+      - kind: Mapping
+        content:
+          - kind: Scalar
+            text: name
+          - kind: Scalar
+            anchor: name
+            tag: '!str'
+            text: John Doe
+          - kind: Scalar
+            text: age
+          - kind: Scalar
+            tag: '!int'
+            text: "30"
+          - kind: Scalar
+            text: hobbies
+          - kind: Sequence
+            content:
+              - kind: Scalar
+                anchor: sport
+                text: reading
+              - kind: Scalar
+                text: hiking
+              - kind: Alias
+          - kind: Scalar
+            text: address
+          - kind: Mapping
+            content:
+              - kind: Scalar
+                text: street
+              - kind: Scalar
+                text: 123 Main St
+              - kind: Scalar
+                text: city
+              - kind: Scalar
+                text: Anytown
+              - kind: Scalar
+                text: zip
+              - kind: Scalar
+                style: Double
+                text: "12345"
+          - kind: Scalar
+            text: aliases
+          - kind: Sequence
+            content:
+              - kind: Alias
+              - kind: Alias
+---
+kind: Document
+content:
+  - kind: Mapping
+    content:
+      - kind: Scalar
+        head: '# Second document with more complex structures'
+        text: data
+      - kind: Mapping
+        content:
+          - kind: Scalar
+            anchor: root
+            text: numbers
+          - kind: Sequence
+            style: Flow
+            content:
+              - kind: Scalar
+                tag: '!!int'
+                text: "1"
+              - kind: Scalar
+                tag: '!!int'
+                text: "2"
+              - kind: Scalar
+                tag: '!!int'
+                text: "3"
+              - kind: Scalar
+                tag: '!!int'
+                text: "4"
+              - kind: Scalar
+                tag: '!!int'
+                text: "5"
+          - kind: Scalar
+            text: text
+          - kind: Scalar
+            style: Double
+            text: Hello, World!
+          - kind: Scalar
+            text: flag
+          - kind: Scalar
+            tag: '!!bool'
+            text: "false"
+          - kind: Scalar
+            text: reference
+          - kind: Alias

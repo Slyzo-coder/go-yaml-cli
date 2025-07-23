@@ -2,6 +2,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"os"
@@ -40,170 +41,129 @@ type Event struct {
 	FootComment string
 }
 
+// EventInfo represents the information about a YAML event for YAML encoding
+type EventInfo struct {
+	Event  string `yaml:"Event"`
+	Value  string `yaml:"Value,omitempty"`
+	Style  string `yaml:"Style,omitempty"`
+	Tag    string `yaml:"Tag,omitempty"`
+	Anchor string `yaml:"Anchor,omitempty"`
+	Head   string `yaml:"Head,omitempty"`
+	Line   string `yaml:"Line,omitempty"`
+	Foot   string `yaml:"Foot,omitempty"`
+	Pos    string `yaml:"Pos,omitempty"`
+}
+
 // ProcessEvents reads YAML from stdin and outputs event information
 func ProcessEvents(profuse, compact bool) error {
 	decoder := yaml.NewDecoder(os.Stdin)
+	firstDoc := true
 
-	if compact {
-		first := true
-		for {
-			var node yaml.Node
-			err := decoder.Decode(&node)
-			if err != nil {
-				if err == io.EOF {
-					break
-				}
-				return fmt.Errorf("failed to decode YAML: %v", err)
+	for {
+		var node yaml.Node
+		err := decoder.Decode(&node)
+		if err != nil {
+			if err == io.EOF {
+				break
 			}
+			return fmt.Errorf("failed to decode YAML: %v", err)
+		}
 
-			events := processNodeToEvents(&node, profuse)
+		// Add document separator for all documents except the first
+		if !firstDoc {
+			fmt.Println("---")
+		}
+		firstDoc = false
+
+		events := processNodeToEvents(&node, profuse)
+
+		if compact {
+			// For compact mode, output each event as a flow style mapping in a sequence
 			for _, event := range events {
-				if !first {
-					fmt.Println()
+				info := formatEventInfo(event, profuse)
+
+				// Create a YAML node with flow style for the mapping
+				compactNode := &yaml.Node{
+					Kind:  yaml.MappingNode,
+					Style: yaml.FlowStyle,
 				}
-				first = false
 
-				fmt.Print("- ")
-				printEventCompact(event, profuse)
-			}
-		}
-		// Add final newline for compact mode
-		if !first {
-			fmt.Println()
-		}
-	} else {
-		for {
-			var node yaml.Node
-			err := decoder.Decode(&node)
-			if err != nil {
-				if err == io.EOF {
-					break
+				// Add the Event field
+				compactNode.Content = append(compactNode.Content,
+					&yaml.Node{Kind: yaml.ScalarNode, Value: "Event"},
+					&yaml.Node{Kind: yaml.ScalarNode, Value: info.Event})
+
+				// Add other fields if they exist
+				if info.Value != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Value"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Value})
 				}
-				return fmt.Errorf("failed to decode YAML: %v", err)
+				if info.Style != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Style"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Style})
+				}
+				if info.Tag != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Tag"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Tag})
+				}
+				if info.Anchor != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Anchor"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Anchor})
+				}
+				if info.Head != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Head"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Head})
+				}
+				if info.Line != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Line"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Line})
+				}
+				if info.Foot != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Foot"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Foot})
+				}
+				if info.Pos != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Pos"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Pos})
+				}
+
+				var buf bytes.Buffer
+				enc := yaml.NewEncoder(&buf)
+				enc.SetIndent(2)
+				if err := enc.Encode([]*yaml.Node{compactNode}); err != nil {
+					enc.Close()
+					return fmt.Errorf("failed to marshal compact event info: %v", err)
+				}
+				enc.Close()
+				fmt.Print(buf.String())
 			}
-
-			events := processNodeToEvents(&node, profuse)
-			for _, event := range events {
-				printEvent(event, profuse)
-			}
-		}
-	}
-
-	return nil
-}
-
-// processNode recursively processes a YAML node and generates events
-func processNode(node *yaml.Node, depth int, profuse bool) error {
-	// Generate start event for this node
-	event := createEvent(node, depth)
-	if event != nil {
-		printEvent(event, profuse)
-	}
-
-	// Process children if this node has content
-	if node.Content != nil {
-		for _, child := range node.Content {
-			if err := processNode(child, depth+1, profuse); err != nil {
-				return err
-			}
-		}
-	}
-
-	// Generate end event for sequence and mapping nodes
-	if node.Kind == yaml.SequenceNode || node.Kind == yaml.MappingNode {
-		endEvent := &Event{
-			Type: getEndEventType(node.Kind),
-		}
-		printEvent(endEvent, profuse)
-	}
-
-	return nil
-}
-
-// createEvent creates an event from a YAML node
-func createEvent(node *yaml.Node, depth int) *Event {
-	event := &Event{
-		StartLine:   node.Line,
-		StartColumn: node.Column,
-		EndLine:     node.Line,
-		EndColumn:   node.Column,
-		HeadComment: node.HeadComment,
-		LineComment: node.LineComment,
-		FootComment: node.FootComment,
-	}
-
-	switch node.Kind {
-	case yaml.DocumentNode:
-		event.Type = EventDocumentStart
-		event.Implicit = true
-	case yaml.ScalarNode:
-		event.Type = EventScalar
-		event.Value = node.Value
-		event.Anchor = node.Anchor
-		event.Tag = formatTag(node.Tag)
-		event.Style = formatStyle(node.Style)
-		event.Implicit = true
-	case yaml.SequenceNode:
-		event.Type = EventSequenceStart
-		event.Anchor = node.Anchor
-		event.Tag = formatTag(node.Tag)
-		event.Style = formatStyle(node.Style)
-		event.Implicit = true
-	case yaml.MappingNode:
-		event.Type = EventMappingStart
-		event.Anchor = node.Anchor
-		event.Tag = formatTag(node.Tag)
-		event.Style = formatStyle(node.Style)
-		event.Implicit = true
-	case yaml.AliasNode:
-		event.Type = EventScalar
-		event.Anchor = node.Anchor
-		event.Value = "*" + node.Anchor
-	default:
-		return nil
-	}
-
-	return event
-}
-
-// getEndEventType returns the end event type for a node kind
-func getEndEventType(kind yaml.Kind) EventType {
-	switch kind {
-	case yaml.SequenceNode:
-		return EventSequenceEnd
-	case yaml.MappingNode:
-		return EventMappingEnd
-	default:
-		return EventDocumentEnd
-	}
-}
-
-// printEventCompact prints an event in compact flow style format
-func printEventCompact(event *Event, profuse bool) {
-	fmt.Print("{Event: ", event.Type)
-	if event.Value != "" {
-		fmt.Printf(", Value: %q", event.Value)
-	}
-	if event.Style != "" {
-		fmt.Printf(", Style: %s", event.Style)
-	}
-	if event.HeadComment != "" {
-		fmt.Printf(", Head: %q", event.HeadComment)
-	}
-	if event.LineComment != "" {
-		fmt.Printf(", Line: %q", event.LineComment)
-	}
-	if event.FootComment != "" {
-		fmt.Printf(", Foot: %q", event.FootComment)
-	}
-	if profuse {
-		if event.StartLine == event.EndLine && event.StartColumn == event.EndColumn {
-			fmt.Printf(", Pos: {%d: %d}", event.StartLine, event.StartColumn)
 		} else {
-			fmt.Printf(", Pos: {%d: %d, %d: %d}", event.StartLine, event.StartColumn, event.EndLine, event.EndColumn)
+			// For non-compact mode, output each event as a separate mapping
+			for _, event := range events {
+				info := formatEventInfo(event, profuse)
+
+				var buf bytes.Buffer
+				enc := yaml.NewEncoder(&buf)
+				enc.SetIndent(2)
+				if err := enc.Encode([]*EventInfo{info}); err != nil {
+					enc.Close()
+					return fmt.Errorf("failed to marshal event info: %v", err)
+				}
+				enc.Close()
+				fmt.Print(buf.String())
+			}
 		}
 	}
-	fmt.Print("}")
+
+	return nil
 }
 
 // processNodeToEvents converts a node to a slice of events for compact output
@@ -326,52 +286,40 @@ func processNodeToEventsRecursive(node *yaml.Node, profuse bool) []*Event {
 	return events
 }
 
-// printEvent prints an event in the expected format
-func printEvent(event *Event, profuse bool) {
-	fmt.Printf("- Event: %v\n", event.Type)
-
-	switch event.Type {
-	case EventScalar:
-		if event.Value != "" {
-			fmt.Printf("  Value: %q\n", event.Value)
-		}
-		if event.Style != "" {
-			fmt.Printf("  Style: %s\n", event.Style)
-		}
-		if event.Tag != "" {
-			fmt.Printf("  Tag: %s\n", event.Tag)
-		}
-		if event.Anchor != "" {
-			fmt.Printf("  Anchor: %s\n", event.Anchor)
-		}
-	case EventSequenceStart, EventMappingStart:
-		if event.Style != "" {
-			fmt.Printf("  Style: %s\n", event.Style)
-		}
-		if event.Tag != "" {
-			fmt.Printf("  Tag: %s\n", event.Tag)
-		}
-		if event.Anchor != "" {
-			fmt.Printf("  Anchor: %s\n", event.Anchor)
-		}
+// formatEventInfo converts an Event to an EventInfo struct for YAML encoding
+func formatEventInfo(event *Event, profuse bool) *EventInfo {
+	info := &EventInfo{
+		Event: string(event.Type),
 	}
 
+	if event.Value != "" {
+		info.Value = event.Value
+	}
+	if event.Style != "" {
+		info.Style = event.Style
+	}
+	if event.Tag != "" {
+		info.Tag = event.Tag
+	}
+	if event.Anchor != "" {
+		info.Anchor = event.Anchor
+	}
 	if event.HeadComment != "" {
-		fmt.Printf("  Head: %q\n", event.HeadComment)
+		info.Head = event.HeadComment
 	}
 	if event.LineComment != "" {
-		fmt.Printf("  Line: %q\n", event.LineComment)
+		info.Line = event.LineComment
 	}
 	if event.FootComment != "" {
-		fmt.Printf("  Foot: %q\n", event.FootComment)
+		info.Foot = event.FootComment
 	}
-
 	if profuse {
 		if event.StartLine == event.EndLine && event.StartColumn == event.EndColumn {
-			fmt.Printf("  Pos: {%d: %d}\n", event.StartLine, event.StartColumn)
+			info.Pos = fmt.Sprintf("{%d: %d}", event.StartLine, event.StartColumn)
 		} else {
-			fmt.Printf("  Pos: {%d: %d, %d: %d}\n", event.StartLine, event.StartColumn, event.EndLine, event.EndColumn)
+			info.Pos = fmt.Sprintf("{%d: %d, %d: %d}", event.StartLine, event.StartColumn, event.EndLine, event.EndColumn)
 		}
 	}
-	fmt.Println()
+
+	return info
 }

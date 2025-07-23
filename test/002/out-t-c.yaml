@@ -2,90 +2,92 @@
 - {Token: DOCUMENT-START}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
-- {Token: SCALAR, Value: "person", Head: "# First document"}
+- {Token: SCALAR, Value: person, Head: '# First document'}
 - {Token: VALUE}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
-- {Token: SCALAR, Value: "name"}
+- {Token: SCALAR, Value: name}
 - {Token: VALUE}
-- {Token: SCALAR, Value: "John Doe"}
+- {Token: SCALAR, Value: John Doe}
 - {Token: KEY}
-- {Token: SCALAR, Value: "age"}
+- {Token: SCALAR, Value: age}
 - {Token: VALUE}
-- {Token: SCALAR, Value: "30"}
+- {Token: SCALAR, Value: 30}
 - {Token: KEY}
-- {Token: SCALAR, Value: "hobbies"}
+- {Token: SCALAR, Value: hobbies}
 - {Token: VALUE}
 - {Token: BLOCK-SEQUENCE-START}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "reading"}
+- {Token: SCALAR, Value: reading}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "hiking"}
+- {Token: SCALAR, Value: hiking}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: DOCUMENT-END}
 - {Token: STREAM-END}
+---
 - {Token: STREAM-START}
 - {Token: DOCUMENT-START}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
-- {Token: SCALAR, Value: "settings", Head: "# Second document"}
+- {Token: SCALAR, Value: settings, Head: '# Second document'}
 - {Token: VALUE}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
-- {Token: SCALAR, Value: "debug"}
+- {Token: SCALAR, Value: debug}
 - {Token: VALUE}
-- {Token: SCALAR, Value: "true"}
+- {Token: SCALAR, Value: true}
 - {Token: KEY}
-- {Token: SCALAR, Value: "log_level"}
+- {Token: SCALAR, Value: log_level}
 - {Token: VALUE}
-- {Token: SCALAR, Value: "INFO"}
+- {Token: SCALAR, Value: INFO}
 - {Token: KEY}
-- {Token: SCALAR, Value: "features"}
+- {Token: SCALAR, Value: features}
 - {Token: VALUE}
 - {Token: BLOCK-SEQUENCE-START}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "feature1"}
+- {Token: SCALAR, Value: feature1}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "feature2"}
+- {Token: SCALAR, Value: feature2}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "feature3"}
+- {Token: SCALAR, Value: feature3}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: DOCUMENT-END}
 - {Token: STREAM-END}
+---
 - {Token: STREAM-START}
 - {Token: DOCUMENT-START}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
-- {Token: SCALAR, Value: "data", Head: "# Third document"}
+- {Token: SCALAR, Value: data, Head: '# Third document'}
 - {Token: VALUE}
 - {Token: BLOCK-MAPPING-START}
 - {Token: KEY}
-- {Token: SCALAR, Value: "numbers"}
+- {Token: SCALAR, Value: numbers}
 - {Token: VALUE}
 - {Token: BLOCK-SEQUENCE-START}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "1"}
+- {Token: SCALAR, Value: 1}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "2"}
+- {Token: SCALAR, Value: 2}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "3"}
+- {Token: SCALAR, Value: 3}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "4"}
+- {Token: SCALAR, Value: 4}
 - {Token: BLOCK-ENTRY}
-- {Token: SCALAR, Value: "5"}
+- {Token: SCALAR, Value: 5}
 - {Token: BLOCK-END}
 - {Token: KEY}
-- {Token: SCALAR, Value: "text"}
+- {Token: SCALAR, Value: text}
 - {Token: VALUE}
-- {Token: SCALAR, Value: "Hello, World!", Style: Double}
+- {Token: SCALAR, Value: 'Hello, World!', Style: Double}
 - {Token: KEY}
-- {Token: SCALAR, Value: "flag"}
+- {Token: SCALAR, Value: flag}
 - {Token: VALUE}
-- {Token: SCALAR, Value: "false"}
+- {Token: SCALAR, Value: false}
 - {Token: BLOCK-END}
 - {Token: BLOCK-END}
 - {Token: DOCUMENT-END}

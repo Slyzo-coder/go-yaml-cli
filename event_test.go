@@ -15,12 +15,12 @@ func TestEventMode(t *testing.T) {
 		{
 			"simple key value",
 			"key: value",
-			[]string{"Event: DOCUMENT-START", "Event: MAPPING-START", "Event: SCALAR", "Value: \"key\"", "Value: \"value\"", "Event: MAPPING-END"},
+			[]string{"Event: DOCUMENT-START", "Event: MAPPING-START", "Event: SCALAR", "Value: key", "Value: value", "Event: MAPPING-END"},
 		},
 		{
 			"sequence",
 			"items:\n  - one\n  - two",
-			[]string{"Event: DOCUMENT-START", "Event: MAPPING-START", "Event: SEQUENCE-START", "Event: SCALAR", "Value: \"one\"", "Value: \"two\"", "Event: SEQUENCE-END"},
+			[]string{"Event: DOCUMENT-START", "Event: MAPPING-START", "Event: SEQUENCE-START", "Event: SCALAR", "Value: one", "Value: two", "Event: SEQUENCE-END"},
 		},
 	}
 

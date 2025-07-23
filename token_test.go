@@ -15,12 +15,12 @@ func TestTokenMode(t *testing.T) {
 		{
 			"simple key value",
 			"key: value",
-			[]string{"Token: STREAM-START", "Token: BLOCK-MAPPING-START", "Token: KEY", "Token: SCALAR", "Value: \"key\"", "Token: VALUE", "Value: \"value\"", "Token: BLOCK-END", "Token: STREAM-END"},
+			[]string{"Token: STREAM-START", "Token: BLOCK-MAPPING-START", "Token: KEY", "Token: SCALAR", "Value: key", "Token: VALUE", "Value: value", "Token: BLOCK-END", "Token: STREAM-END"},
 		},
 		{
 			"sequence",
 			"items:\n  - one\n  - two",
-			[]string{"Token: STREAM-START", "Token: BLOCK-MAPPING-START", "Token: BLOCK-SEQUENCE-START", "Token: BLOCK-ENTRY", "Value: \"one\"", "Value: \"two\"", "Token: BLOCK-END"},
+			[]string{"Token: STREAM-START", "Token: BLOCK-MAPPING-START", "Token: BLOCK-SEQUENCE-START", "Token: BLOCK-ENTRY", "Value: one", "Value: two", "Token: BLOCK-END"},
 		},
 	}
 

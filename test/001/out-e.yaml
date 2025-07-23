@@ -1,42 +1,28 @@
 - Event: DOCUMENT-START
-
 - Event: MAPPING-START
-
 - Event: SCALAR
-  Value: "a"
-
+  Value: a
 - Event: SCALAR
-  Value: "a"
-
+  Value: a
 - Event: SCALAR
-  Value: "b"
-
+  Value: b
 - Event: SCALAR
-  Value: "b"
+  Value: b
   Style: Single
-
 - Event: SCALAR
-  Value: "c"
-
+  Value: c
 - Event: SCALAR
-  Value: "c"
+  Value: c
   Style: Double
-
 - Event: SCALAR
-  Value: "d"
-
+  Value: d
 - Event: SCALAR
-  Value: "d"
+  Value: d
   Style: Literal
-
 - Event: SCALAR
-  Value: "e"
-
+  Value: e
 - Event: SCALAR
-  Value: "e"
+  Value: e
   Style: Folded
-
 - Event: MAPPING-END
-
 - Event: DOCUMENT-END
-

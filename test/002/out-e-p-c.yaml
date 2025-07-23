@@ -1,52 +1,54 @@
-- {Event: DOCUMENT-START, Pos: {2: 1}}
-- {Event: MAPPING-START, Pos: {2: 1}}
-- {Event: SCALAR, Value: "person", Head: "# First document", Pos: {2: 1, 2: 7}}
-- {Event: MAPPING-START, Pos: {3: 3}}
-- {Event: SCALAR, Value: "name", Pos: {3: 3, 3: 7}}
-- {Event: SCALAR, Value: "John Doe", Pos: {3: 9, 3: 17}}
-- {Event: SCALAR, Value: "age", Pos: {4: 3, 4: 6}}
-- {Event: SCALAR, Value: "30", Pos: {4: 8, 4: 10}}
-- {Event: SCALAR, Value: "hobbies", Pos: {5: 3, 5: 10}}
-- {Event: SEQUENCE-START, Pos: {6: 5}}
-- {Event: SCALAR, Value: "reading", Pos: {6: 7, 6: 14}}
-- {Event: SCALAR, Value: "hiking", Pos: {7: 7, 7: 13}}
-- {Event: SEQUENCE-END, Pos: {6: 5}}
-- {Event: MAPPING-END, Pos: {3: 3}}
-- {Event: MAPPING-END, Pos: {2: 1}}
-- {Event: DOCUMENT-END, Pos: {2: 1}}
-- {Event: DOCUMENT-START, Pos: {8: 1}}
-- {Event: MAPPING-START, Pos: {10: 1}}
-- {Event: SCALAR, Value: "settings", Head: "# Second document", Pos: {10: 1, 10: 9}}
-- {Event: MAPPING-START, Pos: {11: 3}}
-- {Event: SCALAR, Value: "debug", Pos: {11: 3, 11: 8}}
-- {Event: SCALAR, Value: "true", Pos: {11: 10, 11: 14}}
-- {Event: SCALAR, Value: "log_level", Pos: {12: 3, 12: 12}}
-- {Event: SCALAR, Value: "INFO", Pos: {12: 14, 12: 18}}
-- {Event: SCALAR, Value: "features", Pos: {13: 3, 13: 11}}
-- {Event: SEQUENCE-START, Style: Flow, Pos: {13: 13}}
-- {Event: SCALAR, Value: "feature1", Pos: {13: 14, 13: 22}}
-- {Event: SCALAR, Value: "feature2", Pos: {13: 24, 13: 32}}
-- {Event: SCALAR, Value: "feature3", Pos: {13: 34, 13: 42}}
-- {Event: SEQUENCE-END, Pos: {13: 13}}
-- {Event: MAPPING-END, Pos: {11: 3}}
-- {Event: MAPPING-END, Pos: {10: 1}}
-- {Event: DOCUMENT-END, Pos: {8: 1}}
-- {Event: DOCUMENT-START, Pos: {14: 1}}
-- {Event: MAPPING-START, Pos: {16: 1}}
-- {Event: SCALAR, Value: "data", Head: "# Third document", Pos: {16: 1, 16: 5}}
-- {Event: MAPPING-START, Pos: {17: 3}}
-- {Event: SCALAR, Value: "numbers", Pos: {17: 3, 17: 10}}
-- {Event: SEQUENCE-START, Style: Flow, Pos: {17: 12}}
-- {Event: SCALAR, Value: "1", Pos: {17: 13, 17: 14}}
-- {Event: SCALAR, Value: "2", Pos: {17: 16, 17: 17}}
-- {Event: SCALAR, Value: "3", Pos: {17: 19, 17: 20}}
-- {Event: SCALAR, Value: "4", Pos: {17: 22, 17: 23}}
-- {Event: SCALAR, Value: "5", Pos: {17: 25, 17: 26}}
-- {Event: SEQUENCE-END, Pos: {17: 12}}
-- {Event: SCALAR, Value: "text", Pos: {18: 3, 18: 7}}
-- {Event: SCALAR, Value: "Hello, World!", Style: Double, Pos: {18: 9, 18: 22}}
-- {Event: SCALAR, Value: "flag", Pos: {19: 3, 19: 7}}
-- {Event: SCALAR, Value: "false", Pos: {19: 9, 19: 14}}
-- {Event: MAPPING-END, Pos: {17: 3}}
-- {Event: MAPPING-END, Pos: {16: 1}}
-- {Event: DOCUMENT-END, Pos: {14: 1}}
+- {Event: DOCUMENT-START, Pos: '{2: 1}'}
+- {Event: MAPPING-START, Pos: '{2: 1}'}
+- {Event: SCALAR, Value: person, Head: '# First document', Pos: '{2: 1, 2: 7}'}
+- {Event: MAPPING-START, Pos: '{3: 3}'}
+- {Event: SCALAR, Value: name, Pos: '{3: 3, 3: 7}'}
+- {Event: SCALAR, Value: John Doe, Pos: '{3: 9, 3: 17}'}
+- {Event: SCALAR, Value: age, Pos: '{4: 3, 4: 6}'}
+- {Event: SCALAR, Value: 30, Pos: '{4: 8, 4: 10}'}
+- {Event: SCALAR, Value: hobbies, Pos: '{5: 3, 5: 10}'}
+- {Event: SEQUENCE-START, Pos: '{6: 5}'}
+- {Event: SCALAR, Value: reading, Pos: '{6: 7, 6: 14}'}
+- {Event: SCALAR, Value: hiking, Pos: '{7: 7, 7: 13}'}
+- {Event: SEQUENCE-END, Pos: '{6: 5}'}
+- {Event: MAPPING-END, Pos: '{3: 3}'}
+- {Event: MAPPING-END, Pos: '{2: 1}'}
+- {Event: DOCUMENT-END, Pos: '{2: 1}'}
+---
+- {Event: DOCUMENT-START, Pos: '{8: 1}'}
+- {Event: MAPPING-START, Pos: '{10: 1}'}
+- {Event: SCALAR, Value: settings, Head: '# Second document', Pos: '{10: 1, 10: 9}'}
+- {Event: MAPPING-START, Pos: '{11: 3}'}
+- {Event: SCALAR, Value: debug, Pos: '{11: 3, 11: 8}'}
+- {Event: SCALAR, Value: true, Pos: '{11: 10, 11: 14}'}
+- {Event: SCALAR, Value: log_level, Pos: '{12: 3, 12: 12}'}
+- {Event: SCALAR, Value: INFO, Pos: '{12: 14, 12: 18}'}
+- {Event: SCALAR, Value: features, Pos: '{13: 3, 13: 11}'}
+- {Event: SEQUENCE-START, Style: Flow, Pos: '{13: 13}'}
+- {Event: SCALAR, Value: feature1, Pos: '{13: 14, 13: 22}'}
+- {Event: SCALAR, Value: feature2, Pos: '{13: 24, 13: 32}'}
+- {Event: SCALAR, Value: feature3, Pos: '{13: 34, 13: 42}'}
+- {Event: SEQUENCE-END, Pos: '{13: 13}'}
+- {Event: MAPPING-END, Pos: '{11: 3}'}
+- {Event: MAPPING-END, Pos: '{10: 1}'}
+- {Event: DOCUMENT-END, Pos: '{8: 1}'}
+---
+- {Event: DOCUMENT-START, Pos: '{14: 1}'}
+- {Event: MAPPING-START, Pos: '{16: 1}'}
+- {Event: SCALAR, Value: data, Head: '# Third document', Pos: '{16: 1, 16: 5}'}
+- {Event: MAPPING-START, Pos: '{17: 3}'}
+- {Event: SCALAR, Value: numbers, Pos: '{17: 3, 17: 10}'}
+- {Event: SEQUENCE-START, Style: Flow, Pos: '{17: 12}'}
+- {Event: SCALAR, Value: 1, Pos: '{17: 13, 17: 14}'}
+- {Event: SCALAR, Value: 2, Pos: '{17: 16, 17: 17}'}
+- {Event: SCALAR, Value: 3, Pos: '{17: 19, 17: 20}'}
+- {Event: SCALAR, Value: 4, Pos: '{17: 22, 17: 23}'}
+- {Event: SCALAR, Value: 5, Pos: '{17: 25, 17: 26}'}
+- {Event: SEQUENCE-END, Pos: '{17: 12}'}
+- {Event: SCALAR, Value: text, Pos: '{18: 3, 18: 7}'}
+- {Event: SCALAR, Value: 'Hello, World!', Style: Double, Pos: '{18: 9, 18: 22}'}
+- {Event: SCALAR, Value: flag, Pos: '{19: 3, 19: 7}'}
+- {Event: SCALAR, Value: false, Pos: '{19: 9, 19: 14}'}
+- {Event: MAPPING-END, Pos: '{17: 3}'}
+- {Event: MAPPING-END, Pos: '{16: 1}'}
+- {Event: DOCUMENT-END, Pos: '{14: 1}'}

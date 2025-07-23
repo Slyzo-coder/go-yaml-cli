@@ -2,6 +2,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"os"
@@ -24,51 +25,112 @@ type Token struct {
 	FootComment string
 }
 
+// TokenInfo represents the information about a YAML token for YAML encoding
+type TokenInfo struct {
+	Token string `yaml:"Token"`
+	Value string `yaml:"Value,omitempty"`
+	Style string `yaml:"Style,omitempty"`
+	Head  string `yaml:"Head,omitempty"`
+	Line  string `yaml:"Line,omitempty"`
+	Foot  string `yaml:"Foot,omitempty"`
+	Pos   string `yaml:"Pos,omitempty"`
+}
+
 // ProcessTokens reads YAML from stdin and outputs token information using the internal scanner
 func ProcessTokens(profuse, compact bool) error {
 	decoder := yaml.NewDecoder(os.Stdin)
+	firstDoc := true
 
-	if compact {
-		first := true
-		for {
-			var node yaml.Node
-			err := decoder.Decode(&node)
-			if err != nil {
-				if err == io.EOF {
-					break
-				}
-				return fmt.Errorf("failed to decode YAML: %v", err)
+	for {
+		var node yaml.Node
+		err := decoder.Decode(&node)
+		if err != nil {
+			if err == io.EOF {
+				break
 			}
-
-			tokens := processNodeToTokens(&node, profuse)
-			for _, token := range tokens {
-				if !first {
-					fmt.Println()
-				}
-				first = false
-
-				fmt.Print("- ")
-				printTokenCompact(token, profuse)
-			}
+			return fmt.Errorf("failed to decode YAML: %v", err)
 		}
-		// Add final newline for compact mode
-		if !first {
-			fmt.Println()
-		}
-	} else {
-		for {
-			var node yaml.Node
-			err := decoder.Decode(&node)
-			if err != nil {
-				if err == io.EOF {
-					break
-				}
-				return fmt.Errorf("failed to decode YAML: %v", err)
-			}
 
-			tokens := processNodeToTokens(&node, profuse)
+		// Add document separator for all documents except the first
+		if !firstDoc {
+			fmt.Println("---")
+		}
+		firstDoc = false
+
+		tokens := processNodeToTokens(&node, profuse)
+
+		if compact {
+			// For compact mode, output each token as a flow style mapping in a sequence
 			for _, token := range tokens {
-				printToken(token, profuse)
+				info := formatTokenInfo(token, profuse)
+
+				// Create a YAML node with flow style for the mapping
+				compactNode := &yaml.Node{
+					Kind:  yaml.MappingNode,
+					Style: yaml.FlowStyle,
+				}
+
+				// Add the Token field
+				compactNode.Content = append(compactNode.Content,
+					&yaml.Node{Kind: yaml.ScalarNode, Value: "Token"},
+					&yaml.Node{Kind: yaml.ScalarNode, Value: info.Token})
+
+				// Add other fields if they exist
+				if info.Value != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Value"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Value})
+				}
+				if info.Style != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Style"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Style})
+				}
+				if info.Head != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Head"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Head})
+				}
+				if info.Line != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Line"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Line})
+				}
+				if info.Foot != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Foot"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Foot})
+				}
+				if info.Pos != "" {
+					compactNode.Content = append(compactNode.Content,
+						&yaml.Node{Kind: yaml.ScalarNode, Value: "Pos"},
+						&yaml.Node{Kind: yaml.ScalarNode, Value: info.Pos})
+				}
+
+				var buf bytes.Buffer
+				enc := yaml.NewEncoder(&buf)
+				enc.SetIndent(2)
+				if err := enc.Encode([]*yaml.Node{compactNode}); err != nil {
+					enc.Close()
+					return fmt.Errorf("failed to marshal compact token info: %v", err)
+				}
+				enc.Close()
+				fmt.Print(buf.String())
+			}
+		} else {
+			// For non-compact mode, output each token as a separate mapping
+			for _, token := range tokens {
+				info := formatTokenInfo(token, profuse)
+
+				var buf bytes.Buffer
+				enc := yaml.NewEncoder(&buf)
+				enc.SetIndent(2)
+				if err := enc.Encode([]*TokenInfo{info}); err != nil {
+					enc.Close()
+					return fmt.Errorf("failed to marshal token info: %v", err)
+				}
+				enc.Close()
+				fmt.Print(buf.String())
 			}
 		}
 	}
@@ -76,64 +138,36 @@ func ProcessTokens(profuse, compact bool) error {
 	return nil
 }
 
-// printTokenCompact prints a token in compact flow style format
-func printTokenCompact(token *Token, profuse bool) {
-	fmt.Print("{Token: ", token.Type)
+// formatTokenInfo converts a Token to a TokenInfo struct for YAML encoding
+func formatTokenInfo(token *Token, profuse bool) *TokenInfo {
+	info := &TokenInfo{
+		Token: token.Type,
+	}
+
 	if token.Value != "" {
-		fmt.Printf(", Value: %q", token.Value)
+		info.Value = token.Value
 	}
 	if token.Style != "" && token.Style != "Plain" {
-		fmt.Printf(", Style: %s", token.Style)
+		info.Style = token.Style
 	}
 	if token.HeadComment != "" {
-		fmt.Printf(", Head: %q", token.HeadComment)
+		info.Head = token.HeadComment
 	}
 	if token.LineComment != "" {
-		fmt.Printf(", Line: %q", token.LineComment)
+		info.Line = token.LineComment
 	}
 	if token.FootComment != "" {
-		fmt.Printf(", Foot: %q", token.FootComment)
+		info.Foot = token.FootComment
 	}
 	if profuse {
 		if token.StartLine == token.EndLine && token.StartColumn == token.EndColumn {
-			fmt.Printf(", Pos: {%d: %d}", token.StartLine, token.StartColumn)
+			info.Pos = fmt.Sprintf("{%d: %d}", token.StartLine, token.StartColumn)
 		} else {
-			fmt.Printf(", Pos: {%d: %d, %d: %d}", token.StartLine, token.StartColumn, token.EndLine, token.EndColumn)
+			info.Pos = fmt.Sprintf("{%d: %d, %d: %d}", token.StartLine, token.StartColumn, token.EndLine, token.EndColumn)
 		}
 	}
-	fmt.Print("}")
-}
 
-// printToken prints a token in the expected format
-func printToken(token *Token, profuse bool) {
-	fmt.Printf("- Token: %v\n", token.Type)
-
-	if token.Value != "" {
-		fmt.Printf("  Value: %q\n", token.Value)
-	}
-
-	if token.Style != "" && token.Style != "Plain" {
-		fmt.Printf("  Style: %s\n", token.Style)
-	}
-
-	if token.HeadComment != "" {
-		fmt.Printf("  Head: %q\n", token.HeadComment)
-	}
-	if token.LineComment != "" {
-		fmt.Printf("  Line: %q\n", token.LineComment)
-	}
-	if token.FootComment != "" {
-		fmt.Printf("  Foot: %q\n", token.FootComment)
-	}
-
-	if profuse {
-		if token.StartLine == token.EndLine && token.StartColumn == token.EndColumn {
-			fmt.Printf("  Pos: {%d: %d}\n", token.StartLine, token.StartColumn)
-		} else {
-			fmt.Printf("  Pos: {%d: %d, %d: %d}\n", token.StartLine, token.StartColumn, token.EndLine, token.EndColumn)
-		}
-	}
-	fmt.Println()
+	return info
 }
 
 // processNodeToTokens converts a node to a slice of tokens

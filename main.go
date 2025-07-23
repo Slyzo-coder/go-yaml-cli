@@ -45,7 +45,7 @@ func main() {
 	preserveMode := flag.Bool("p", false, "Preserve comments and styles (with -y)")
 	prettyMode := flag.Bool("pretty", false, "Pretty JSON output (with -j)")
 	profuseMode := flag.Bool("profuse", false, "Show line info for --token and --event")
-	compactMode := flag.Bool("c", false, "Compact output (flow style, no blank lines)")
+	longMode := flag.Bool("l", false, "Long output (block style, with blank lines)")
 
 	// Long flag aliases
 	flag.BoolVar(showHelp, "help", false, "Show help information")
@@ -59,7 +59,7 @@ func main() {
 	flag.BoolVar(eventProfuseMode, "EVENT", false, "Event Profuse; short for -e -p")
 	flag.BoolVar(nodeMode, "node", false, "Node formatting mode")
 	flag.BoolVar(preserveMode, "preserve", false, "Preserve comments and styles (with -y)")
-	flag.BoolVar(compactMode, "compact", false, "Compact output (flow style, no blank lines)")
+	flag.BoolVar(longMode, "long", false, "Long output (block style, with blank lines)")
 
 	flag.Parse()
 
@@ -82,13 +82,13 @@ func main() {
 	}
 
 	// If no stdin and no flags, show help
-	if (stat.Mode()&os.ModeCharDevice) != 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*preserveMode && !*compactMode {
+	if (stat.Mode()&os.ModeCharDevice) != 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*preserveMode && !*longMode {
 		printHelp()
 		return
 	}
 
 	// Error if stdin has data but no mode flags are provided
-	if (stat.Mode()&os.ModeCharDevice) == 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*preserveMode && !*compactMode {
+	if (stat.Mode()&os.ModeCharDevice) == 0 && !*nodeMode && !*eventMode && !*eventProfuseMode && !*tokenMode && !*tokenProfuseMode && !*jsonMode && !*jsonPrettyMode && !*yamlMode && !*yamlPreserveMode && !*preserveMode && !*longMode {
 		fmt.Fprintf(os.Stderr, "Error: stdin has data but no mode specified. Use -n/--node, -e/--event, -E/--EVENT, -t/--token, -T/--TOKEN, -j/--json, -J/--JSON, -y/--yaml, -Y/--YAML, or --preserve flag.\n")
 		os.Exit(1)
 	}
@@ -97,23 +97,27 @@ func main() {
 	if *eventMode {
 		// Use event formatting mode
 		profuse := *profuseMode || *preserveMode // -p means profuse for event mode
-		if err := ProcessEvents(profuse, *compactMode); err != nil {
+		compact := !*longMode                    // compact is default, long mode negates it
+		if err := ProcessEvents(profuse, compact); err != nil {
 			log.Fatal("Failed to process events:", err)
 		}
 	} else if *eventProfuseMode {
 		// Use event formatting mode with profuse output
-		if err := ProcessEvents(true, *compactMode); err != nil {
+		compact := !*longMode // compact is default, long mode negates it
+		if err := ProcessEvents(true, compact); err != nil {
 			log.Fatal("Failed to process events:", err)
 		}
 	} else if *tokenMode {
 		// Use token formatting mode
 		profuse := *profuseMode || *preserveMode // -p means profuse for token mode
-		if err := ProcessTokens(profuse, *compactMode); err != nil {
+		compact := !*longMode                    // compact is default, long mode negates it
+		if err := ProcessTokens(profuse, compact); err != nil {
 			log.Fatal("Failed to process tokens:", err)
 		}
 	} else if *tokenProfuseMode {
 		// Use token formatting mode with profuse output
-		if err := ProcessTokens(true, *compactMode); err != nil {
+		compact := !*longMode // compact is default, long mode negates it
+		if err := ProcessTokens(true, compact); err != nil {
 			log.Fatal("Failed to process tokens:", err)
 		}
 	} else if *jsonMode {
@@ -208,7 +212,7 @@ Options:
   -p, --preserve   Preserve comments and styles (with -y)
   -p, --pretty     Pretty JSON output (with -j)
   -p, --profuse    Show line info for --token and --event
-  -c, --compact    Remove blanks lines in formatting
+  -l, --long       Long output (block style)
 
   -h, --help       Show this help information
   --version        Show version information

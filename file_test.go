@@ -100,8 +100,8 @@ func parseFlagsFromFilename(flagPart string) []string {
 			flags = append(flags, "-y")
 		case "p":
 			flags = append(flags, "-p")
-		case "c":
-			flags = append(flags, "-c")
+		case "l":
+			flags = append(flags, "-l")
 		case "E":
 			flags = append(flags, "-E")
 		case "T":

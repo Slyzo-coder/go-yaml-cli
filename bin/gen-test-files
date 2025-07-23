@@ -13,12 +13,12 @@ for tnum in $(cd test && echo *); do
     <"test/$tnum/in.yaml" ./go-yaml -t -p    > test/$tnum/out-t-p.yaml
     <"test/$tnum/in.yaml" ./go-yaml -e       > test/$tnum/out-e.yaml
     <"test/$tnum/in.yaml" ./go-yaml -e -p    > test/$tnum/out-e-p.yaml
-    <"test/$tnum/in.yaml" ./go-yaml -e -c    > test/$tnum/out-e-c.yaml
-    <"test/$tnum/in.yaml" ./go-yaml -e -p -c > test/$tnum/out-e-p-c.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -e -l    > test/$tnum/out-e-l.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -e -p -l > test/$tnum/out-e-p-l.yaml
     <"test/$tnum/in.yaml" ./go-yaml -t       > test/$tnum/out-t.yaml
     <"test/$tnum/in.yaml" ./go-yaml -t -p    > test/$tnum/out-t-p.yaml
-    <"test/$tnum/in.yaml" ./go-yaml -t -c    > test/$tnum/out-t-c.yaml
-    <"test/$tnum/in.yaml" ./go-yaml -t -p -c > test/$tnum/out-t-p-c.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t -l    > test/$tnum/out-t-l.yaml
+    <"test/$tnum/in.yaml" ./go-yaml -t -p -l > test/$tnum/out-t-p-l.yaml
     <"test/$tnum/in.yaml" ./go-yaml -n       > test/$tnum/out-n.yaml
   )
 done

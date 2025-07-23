@@ -1,88 +1,54 @@
-- Event: DOCUMENT-START
-- Event: MAPPING-START
-- Event: SCALAR
-  Value: person
-  Head: '# First document'
-- Event: MAPPING-START
-- Event: SCALAR
-  Value: name
-- Event: SCALAR
-  Value: John Doe
-- Event: SCALAR
-  Value: age
-- Event: SCALAR
-  Value: "30"
-- Event: SCALAR
-  Value: hobbies
-- Event: SEQUENCE-START
-- Event: SCALAR
-  Value: reading
-- Event: SCALAR
-  Value: hiking
-- Event: SEQUENCE-END
-- Event: MAPPING-END
-- Event: MAPPING-END
-- Event: DOCUMENT-END
+- {Event: DOCUMENT-START}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: person, Head: '# First document'}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: name}
+- {Event: SCALAR, Value: John Doe}
+- {Event: SCALAR, Value: age}
+- {Event: SCALAR, Value: 30}
+- {Event: SCALAR, Value: hobbies}
+- {Event: SEQUENCE-START}
+- {Event: SCALAR, Value: reading}
+- {Event: SCALAR, Value: hiking}
+- {Event: SEQUENCE-END}
+- {Event: MAPPING-END}
+- {Event: MAPPING-END}
+- {Event: DOCUMENT-END}
 ---
-- Event: DOCUMENT-START
-- Event: MAPPING-START
-- Event: SCALAR
-  Value: settings
-  Head: '# Second document'
-- Event: MAPPING-START
-- Event: SCALAR
-  Value: debug
-- Event: SCALAR
-  Value: "true"
-- Event: SCALAR
-  Value: log_level
-- Event: SCALAR
-  Value: INFO
-- Event: SCALAR
-  Value: features
-- Event: SEQUENCE-START
-  Style: Flow
-- Event: SCALAR
-  Value: feature1
-- Event: SCALAR
-  Value: feature2
-- Event: SCALAR
-  Value: feature3
-- Event: SEQUENCE-END
-- Event: MAPPING-END
-- Event: MAPPING-END
-- Event: DOCUMENT-END
+- {Event: DOCUMENT-START}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: settings, Head: '# Second document'}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: debug}
+- {Event: SCALAR, Value: true}
+- {Event: SCALAR, Value: log_level}
+- {Event: SCALAR, Value: INFO}
+- {Event: SCALAR, Value: features}
+- {Event: SEQUENCE-START, Style: Flow}
+- {Event: SCALAR, Value: feature1}
+- {Event: SCALAR, Value: feature2}
+- {Event: SCALAR, Value: feature3}
+- {Event: SEQUENCE-END}
+- {Event: MAPPING-END}
+- {Event: MAPPING-END}
+- {Event: DOCUMENT-END}
 ---
-- Event: DOCUMENT-START
-- Event: MAPPING-START
-- Event: SCALAR
-  Value: data
-  Head: '# Third document'
-- Event: MAPPING-START
-- Event: SCALAR
-  Value: numbers
-- Event: SEQUENCE-START
-  Style: Flow
-- Event: SCALAR
-  Value: "1"
-- Event: SCALAR
-  Value: "2"
-- Event: SCALAR
-  Value: "3"
-- Event: SCALAR
-  Value: "4"
-- Event: SCALAR
-  Value: "5"
-- Event: SEQUENCE-END
-- Event: SCALAR
-  Value: text
-- Event: SCALAR
-  Value: Hello, World!
-  Style: Double
-- Event: SCALAR
-  Value: flag
-- Event: SCALAR
-  Value: "false"
-- Event: MAPPING-END
-- Event: MAPPING-END
-- Event: DOCUMENT-END
+- {Event: DOCUMENT-START}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: data, Head: '# Third document'}
+- {Event: MAPPING-START}
+- {Event: SCALAR, Value: numbers}
+- {Event: SEQUENCE-START, Style: Flow}
+- {Event: SCALAR, Value: 1}
+- {Event: SCALAR, Value: 2}
+- {Event: SCALAR, Value: 3}
+- {Event: SCALAR, Value: 4}
+- {Event: SCALAR, Value: 5}
+- {Event: SEQUENCE-END}
+- {Event: SCALAR, Value: text}
+- {Event: SCALAR, Value: 'Hello, World!', Style: Double}
+- {Event: SCALAR, Value: flag}
+- {Event: SCALAR, Value: false}
+- {Event: MAPPING-END}
+- {Event: MAPPING-END}
+- {Event: DOCUMENT-END}
